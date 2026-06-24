@@ -54,86 +54,50 @@
         }));
     } else {
         PROJECTS = [
-          { 
-            id: 'cyberdiag', 
-            title: 'CyberDiag Website', 
-            desc: isEn ? "Showcase website for the CyberDiag app, presenting its features and benefits, and offering download for easy access." : "Site web de présentation de l'application CyberDiag, pour présenter ses fonctionnalités et ses avantages et proposer le téléchargement afin de faciliter son accès.", 
-            category: isEn ? 'Website' : 'Site Web', 
-            year: '2026', 
-            tags: ['Gsap', 'Lenis', 'Three.js'], 
-            cover: 'assets/images/projects/Covers/backend architectures_web.avif' 
+          {
+            id: 'food-delivery',
+            title: 'Food Delivery Platform',
+            desc: isEn ? 'Built two React Native apps supporting 190+ menu items and 150+ daily orders in live production. Secure Node.js, Express, Prisma, and PostgreSQL backend.' : 'Développement de deux applications React Native (190+ articles, 150+ commandes/jour). Backend sécurisé Node.js, Express, Prisma, PostgreSQL.',
+            category: isEn ? 'Mobile App' : 'App Mobile',
+            year: '2024',
+            tags: ['React Native', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Stripe', 'WebSockets'],
+            cover: 'food_delivery.png'
           },
-          { 
-            id: 'anima', 
-            title: 'Anima', 
-            desc: isEn ? "Website about animal rights, created to practice web animations with tools like GSAP and Lenis." : "Site web sur la cause animale afin de m'exercer à la création d'animations web avec des outils comme GSAP ou Lenis.", 
-            category: isEn ? 'Website' : 'Site Web', 
-            year: '2026', 
-            tags: ['Gsap', 'Lenis'], 
-            cover: 'assets/images/projects/Covers/Anima.avif' 
+          {
+            id: 'sports-club',
+            title: 'Sports Club Platform',
+            desc: isEn ? 'Full-stack web system with responsive frontend interfaces using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.' : 'Système web full-stack avec interfaces responsive en React, HTML5, CSS3 et Tailwind. Intégration d\'API REST et déploiement Netlify.',
+            category: isEn ? 'Web Application' : 'Application Web',
+            year: '2024',
+            tags: ['React.js', 'Tailwind CSS', 'REST API', 'Netlify'],
+            cover: 'sports_club.png'
           },
-          { 
-            id: 'cyberdiag-app', 
-            title: 'CyberDiag App', 
-            desc: isEn ? "Desktop application designed for SMEs to perform comprehensive cybersecurity diagnostics. Intuitive interface to assess vulnerabilities and provide tailored recommendations." : "Application conçue pour les PME afin de réaliser des diagnostics de développement backend complets. Interface intuitive pour évaluer les vulnérabilités et proposer des recommandations personnalisées.", 
-            category: isEn ? 'Desktop App' : 'Application Desktop', 
-            year: '2026', 
-            tags: ['Python', 'Gsap', 'Three.js'], 
-            cover: 'assets/images/projects/Covers/CyberDiag.avif' 
+          {
+            id: 'durr-cts',
+            title: 'Inspection Data Manager',
+            desc: isEn ? 'Desktop solution for equipment diagnostics featuring a Python parser for tag extraction and a multi-user SQLite database with automatic conflict resolution.' : 'Solution de bureau pour le diagnostic d\'équipements, avec un parseur Python pour l\'extraction de données et une base SQLite multi-utilisateurs.',
+            category: isEn ? 'Desktop Application' : 'Application Desktop',
+            year: '2024',
+            tags: ['Python', 'SQLite', 'SharePoint', 'OneDrive', 'Pytest'],
+            cover: 'assets/images/projects/Covers/CyberDiag.avif'
           },
-          { 
-            id: 'zenith', 
-            title: 'Zenith', 
-            desc: isEn ? "Innovative web browser focused on privacy and performance, featuring a built-in ad blocker, optimized tab management, and extensive customization." : "Navigateur web innovant axé sur la confidentialité et la performance, avec bloqueur de publicités intégré, gestion optimisée des onglets et personnalisation poussée.", 
-            category: isEn ? 'Desktop App' : 'Application Desktop', 
-            year: '2026', 
-            tags: ['Electron', 'JavaScript', 'Three.js'], 
-            cover: 'assets/images/projects/Covers/Zenith.avif' 
+          {
+            id: 'healthcare-nlp',
+            title: 'Healthcare NLP Chatbot',
+            desc: isEn ? 'Python Flask backend application for healthcare symptom classification and RESTful APIs using NLP intent classification with 80% accuracy.' : 'Backend Python (Flask) pour la classification de symptômes médicaux par traitement automatique du langage naturel (NLP) avec 80% de précision.',
+            category: isEn ? 'AI / Backend API' : 'IA / API Backend',
+            year: '2023',
+            tags: ['Python', 'Flask', 'NLP', 'TF-IDF', 'N-grams'],
+            cover: 'healthcare_nlp.png'
           },
-          { 
-            id: 'portfolio', 
-            title: 'Portfolio', 
-            desc: isEn ? "Personal website showcasing my projects, skills, and experience in web development. Designed with a strong focus on aesthetics and user experience." : "Site web personnel présentant mes projets, compétences et expériences en développement web. Conçu avec une attention particulière à l'esthétique et à la convivialité.", 
-            category: isEn ? 'Website' : 'Site Web', 
-            year: '2026', 
-            tags: ['NextJS', 'GSAP', 'Three.js'], 
-            cover: 'assets/images/projects/Covers/Portfolio.avif' 
-          },
-          { 
-            id: 'skymcdb', 
-            title: 'SkymcDB', 
-            desc: isEn ? "A powerful and intuitive tool designed to manage, organize, and optimize your Minecraft building projects, developed specifically for builders." : "Un outil puissant et intuitif conçu pour gérer, organiser et optimiser vos projets de construction Minecraft, développé spécifiquement pour les builders.", 
-            category: isEn ? 'Desktop App' : 'Application Desktop', 
-            year: '2024', 
-            tags: ['Java', 'JavaFX', 'CSS'], 
-            cover: 'assets/images/projects/Covers/SkymcDB.avif' 
-          },
-          { 
-            id: 'chromablock', 
-            title: 'ChromaBlock', 
-            desc: isEn ? "Web adaptation of SkymcDB to reach a wider audience, introducing brand new features for Minecraft builders." : "Adaptation web de SkymcDB, pour élargir l'audience, permettant des fonctionnalités inédites dans le domaine du build Minecraft.", 
-            category: 'Web Application', 
-            year: '2024', 
-            tags: ['JavaScript', 'HTML', 'CSS'], 
-            cover: 'assets/images/projects/Covers/ChromaBlock.avif' 
-          },
-          { 
-            id: 'symphony', 
-            title: 'Symphony', 
-            desc: isEn ? "Web application allowing users to host and stream their music, as well as discover music published by others on the platform." : "Application web permettant aux utilisateurs d'héberger et lire leurs musiques ainsi que celles publiées par d'autres utilisateurs sur la plateforme.", 
-            category: 'Web Application', 
-            year: '2024', 
-            tags: ['Netlify Functions', 'JavaScript', 'HTML/CSS'], 
-            cover: 'assets/images/projects/Covers/Symphony.avif' 
-          },
-          { 
-            id: 'echo', 
-            title: 'Echo', 
-            desc: isEn ? "Web interface to interact and chat with a local Artificial Intelligence (Qwen). Smooth and private conversational experience." : "Interface web permettant d'interagir et discuter avec une intelligence artificielle fonctionnant en local (Qwen). Expérience conversationnelle fluide et privée.", 
-            category: isEn ? 'AI / Web' : 'IA / Web', 
-            year: '2024', 
-            tags: ['JavaScript', 'HTML/CSS', 'AI Local'], 
-            cover: 'assets/images/projects/Covers/Echo.avif' 
+          {
+            id: 'aws-infra',
+            title: 'AWS Cloud Infrastructure',
+            desc: isEn ? 'Provisioned and configured AWS EC2 instances, security groups, and network access rules for secure cloud lifecycle management.' : 'Provisionnement et configuration d\'instances AWS EC2, de groupes de sécurité et de règles réseau pour une gestion sécurisée du cycle de vie cloud.',
+            category: isEn ? 'Cloud / DevOps' : 'Cloud / DevOps',
+            year: '2025',
+            tags: ['AWS', 'EC2', 'Security Groups', 'Infrastructure'],
+            cover: 'aws_infra.png'
           }
         ];
     }

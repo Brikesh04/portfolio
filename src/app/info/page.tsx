@@ -58,40 +58,39 @@ export default async function InfoPage() {
             <div className="skill-col">
               <div className="skill-col-title" data-i18n="info.skills.frontend">{T['info.skills.frontend'] || 'Frontend'}</div>
               <ul>
-                <li>HTML / CSS</li>
-                <li>JavaScript</li>
+                <li>React.js</li>
+                <li>React Native</li>
                 <li>TypeScript</li>
-                <li>React · Next.js</li>
-                <li>Tailwind</li>
-              </ul>
-            </div>
-            <div className="skill-col">
-              <div className="skill-col-title" data-i18n="info.skills.animation">{T['info.skills.animation'] || 'Animation & 3D'}</div>
-              <ul>
-                <li>GSAP</li>
-                <li>Lenis</li>
-                <li>Three.js</li>
-                <li>WebGL / GLSL</li>
-                <li>Blender</li>
+                <li>Tailwind CSS</li>
+                <li>NativeWind</li>
               </ul>
             </div>
             <div className="skill-col">
               <div className="skill-col-title" data-i18n="info.skills.backend">{T['info.skills.backend'] || 'Backend'}</div>
               <ul>
                 <li>Node.js · Express</li>
-                <li>Python</li>
-                <li>Java · PHP</li>
-                <li>MySQL · PostgreSQL</li>
-                <li>MongoDB · Supabase</li>
+                <li>Python · Flask</li>
+                <li>Java · SQL</li>
+                <li>Prisma ORM</li>
+                <li>REST APIs</li>
               </ul>
             </div>
             <div className="skill-col">
-              <div className="skill-col-title" data-i18n="info.skills.security">{T['info.skills.security'] || 'Sécurité & Outils'}</div>
+              <div className="skill-col-title" data-i18n="info.skills.animation">{T['info.skills.animation'] || 'Databases'}</div>
               <ul>
-                <li>Linux · Bash</li>
-                <li>OWASP · Nmap</li>
-                <li>Metasploit</li>
-                <li>Docker · Git</li>
+                <li>PostgreSQL</li>
+                <li>Supabase</li>
+                <li>SQLite</li>
+                <li>Relational Design</li>
+              </ul>
+            </div>
+            <div className="skill-col">
+              <div className="skill-col-title" data-i18n="info.skills.security">{T['info.skills.security'] || 'Cloud & DevOps'}</div>
+              <ul>
+                <li>AWS (EC2, SG)</li>
+                <li>Firebase</li>
+                <li>Netlify · Render</li>
+                <li>CI/CD · Git</li>
               </ul>
             </div>
           </div>

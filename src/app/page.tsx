@@ -115,14 +115,11 @@ export default async function HomePage() {
           </svg>
           <div className="projects-inner">
             <div className="projects-list" id="projects-list">
-              <div className="proj-item" data-id="cyberdiag" data-img="/assets/images/projects/Covers/backend architectures_web.avif" data-date="01 2025">CyberDiag website</div>
-              <div className="proj-item" data-id="anima" data-img="/assets/images/projects/Covers/Anima.avif" data-date="06 2025">Anima</div>
-              <div className="proj-item" data-id="cyberdiag-app" data-img="/assets/images/projects/Covers/CyberDiag.avif" data-date="09 2025">CyberDiag app</div>
-              <div className="proj-item" data-id="zenith" data-img="/assets/images/projects/Covers/Zenith.avif" data-date="11 2025">Zenith</div>
-              <div className="proj-item" data-id="skymcdb" data-img="/assets/images/projects/Covers/SkymcDB.avif" data-date="02 2026">SkymcDB</div>
-              <div className="proj-item" data-id="chromablock" data-img="/assets/images/projects/Covers/ChromaBlock.avif" data-date="03 2026">ChromaBlock</div>
-              <div className="proj-item" data-id="symphony" data-img="/assets/images/projects/Covers/Symphony.avif" data-date="03 2026">Symphony</div>
-              <div className="proj-item" data-id="echo" data-img="/assets/images/projects/Covers/Echo.avif" data-date="03 2026">Echo</div>
+              <div className="proj-item" data-id="food-delivery" data-img="/food_delivery.png" data-date="09 2024">Food Delivery Platform</div>
+              <div className="proj-item" data-id="sports-club" data-img="/sports_club.png" data-date="06 2024">Sports Club Platform</div>
+              <div className="proj-item" data-id="durr-cts" data-img="/assets/images/projects/Covers/CyberDiag.avif" data-date="11 2024">Inspection Data Manager</div>
+              <div className="proj-item" data-id="healthcare-nlp" data-img="/healthcare_nlp.png" data-date="05 2023">Healthcare NLP Chatbot</div>
+              <div className="proj-item" data-id="aws-infra" data-img="/aws_infra.png" data-date="11 2025">AWS Cloud Infrastructure</div>
             </div>
           </div>
         </div>
@@ -130,14 +127,11 @@ export default async function HomePage() {
 
       <section className="circle-gallery" id="circle-gallery">
         <div className="circle-gallery-pin" id="circle-gallery-pin">
-          <img className="cg-img" src="/assets/images/projects/Covers/backend architectures_web.avif" alt="CyberDiag — site web" width="3000" height="2250" />
-          <img className="cg-img" src="/assets/images/projects/Covers/Anima.avif" alt="Anima — site web sur la cause animale" width="3000" height="2250" />
-          <img className="cg-img" src="/assets/images/projects/Covers/CyberDiag.avif" alt="CyberDiag — application desktop" width="1333" height="1000" />
-          <img className="cg-img" src="/assets/images/projects/Covers/Zenith.avif" alt="Zenith — navigateur web" width="2667" height="2000" />
-          <img className="cg-img" src="/assets/images/projects/Covers/SkymcDB.avif" alt="SkymcDB — outil pour builders" width="2667" height="2000" />
-          <img className="cg-img" src="/assets/images/projects/Covers/ChromaBlock.avif" alt="ChromaBlock — version web" width="2667" height="2000" />
-          <img className="cg-img" src="/assets/images/projects/Covers/Symphony.avif" alt="Symphony — application web" width="2667" height="2000" />
-          <img className="cg-img" src="/assets/images/projects/Covers/Echo.avif" alt="Echo — interface IA" width="2667" height="2000" />
+          <img className="cg-img" src="/food_delivery.png" alt="Food Delivery Platform" width="3000" height="2250" />
+          <img className="cg-img" src="/sports_club.png" alt="Sports Club Platform" width="3000" height="2250" />
+          <img className="cg-img" src="/assets/images/projects/Covers/CyberDiag.avif" alt="Inspection Data Manager" width="1333" height="1000" />
+          <img className="cg-img" src="/healthcare_nlp.png" alt="Healthcare NLP Chatbot" width="3000" height="2250" />
+          <img className="cg-img" src="/aws_infra.png" alt="AWS Cloud Infrastructure" width="3000" height="2250" />
           <p 
             className="cg-phrase" 
             id="cg-phrase" 
@@ -172,108 +166,100 @@ export default async function HomePage() {
               </div>
               <div className="skill-body">
                 <ul className="skill-body-inner">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
+                  <li>React.js</li>
+                  <li>React Native</li>
                   <li>TypeScript</li>
-                  <li>React</li>
-                  <li>Next.js</li>
-                  <li>Tailwind</li>
-                  <li>Bootstrap</li>
-                  <li>Electron</li>
+                  <li>Tailwind CSS</li>
+                  <li>NativeWind</li>
+                  <li>HTML5 & CSS3</li>
                 </ul>
               </div>
             </div>
             <div className="skill-group" data-group="animation">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.animation">Animation & 3D</span>
-                <span className="skill-header-icon"></span>
-              </div>
-              <div className="skill-body">
-                <ul className="skill-body-inner">
-                  <li>GSAP</li>
-                  <li>Lenis</li>
-                  <li>Barba.js</li>
-                  <li>Three.js</li>
-                  <li>WebGL</li>
-                  <li>Blender</li>
-                </ul>
-              </div>
-            </div>
-            <div className="skill-group" data-group="backend">
-              <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.backend">Backend</span>
+                <span className="skill-header-title" data-i18n="index.skills.animation">Backend</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
                 <ul className="skill-body-inner">
                   <li>Node.js</li>
                   <li>Express.js</li>
-                  <li>Python</li>
-                  <li>Java</li>
-                  <li>PHP</li>
-                  <li>Netlify</li>
+                  <li>Flask</li>
+                  <li>REST APIs</li>
+                  <li>Prisma ORM</li>
+                  <li>JWT Auth</li>
+                  <li>Zod Validation</li>
+                </ul>
+              </div>
+            </div>
+            <div className="skill-group" data-group="backend">
+              <div className="skill-header">
+                <span className="skill-header-title" data-i18n="index.skills.backend">Databases</span>
+                <span className="skill-header-icon"></span>
+              </div>
+              <div className="skill-body">
+                <ul className="skill-body-inner">
+                  <li>PostgreSQL</li>
+                  <li>Supabase</li>
+                  <li>SQLite</li>
+                  <li>Relational Design</li>
                 </ul>
               </div>
             </div>
             <div className="skill-group" data-group="database">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.database">Bases de données</span>
+                <span className="skill-header-title" data-i18n="index.skills.database">Cloud & DevOps</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
                 <ul className="skill-body-inner">
-                  <li>MySQL</li>
-                  <li>PostgreSQL</li>
-                  <li>MongoDB</li>
-                  <li>Supabase</li>
+                  <li>AWS (EC2, SG)</li>
+                  <li>Firebase</li>
+                  <li>Netlify</li>
+                  <li>Render</li>
+                  <li>CI/CD Pipelines</li>
+                  <li>Git</li>
                 </ul>
               </div>
             </div>
             <div className="skill-group" data-group="devops">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.devops">DevOps & Outils</span>
+                <span className="skill-header-title" data-i18n="index.skills.devops">AI & Tools</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
                 <ul className="skill-body-inner">
-                  <li>Docker</li>
-                  <li>Vercel</li>
-                  <li>Git</li>
-                  <li>GitHub</li>
-                  <li>GitLab</li>
-                  <li>Cloudflare</li>
+                  <li>NLP (Natural Language)</li>
+                  <li>Claude / OpenAI APIs</li>
+                  <li>Claude Code</li>
                 </ul>
               </div>
             </div>
             <div className="skill-group" data-group="sysadmin">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.security">Système & Sécurité</span>
+                <span className="skill-header-title" data-i18n="index.skills.security">Core Concepts</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
                 <ul className="skill-body-inner">
-                  <li>Linux</li>
-                  <li>Bash</li>
-                  <li>Shell</li>
-                  <li>Owasp</li>
-                  <li>Metasploit</li>
-                  <li>Nmap</li>
-                  <li>OpenVAS</li>
-                  <li>Ossec</li>
+                  <li>Data Structures</li>
+                  <li>Algorithms</li>
+                  <li>OOP</li>
+                  <li>Client-Server</li>
                 </ul>
               </div>
             </div>
             <div className="skill-group" data-group="design">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.design">Design</span>
+                <span className="skill-header-title" data-i18n="index.skills.design">Languages</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
                 <ul className="skill-body-inner">
-                  <li>Photoshop</li>
-                  <li>Canva</li>
-                  <li>Figma</li>
+                  <li>JavaScript (ES6+)</li>
+                  <li>Python</li>
+                  <li>Java</li>
+                  <li>SQL</li>
                 </ul>
               </div>
             </div>

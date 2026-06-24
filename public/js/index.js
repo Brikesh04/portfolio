@@ -29,10 +29,14 @@
         el.href = settings.linkedin_url;
     });
 
+    const pLogoElement = document.getElementById('preloader-logo');
     const pBrikeshElement = document.getElementById('preloader-luke');
     const pVikinElement = document.getElementById('preloader-baffait');
-    if (pBrikeshElement) pBrikeshElement.textContent = settings.first_name;
-    if (pVikinElement) pVikinElement.textContent = ' ' + settings.last_name;
+    if (settings.first_name) {
+        if (pLogoElement) pLogoElement.textContent = settings.first_name[0];
+        if (pBrikeshElement) pBrikeshElement.textContent = settings.first_name.slice(1);
+    }
+    if (pVikinElement) pVikinElement.textContent = ' ' + (settings.last_name || 'Vikin');
 
     const fLuke = document.querySelector('.footer-name-luke');
     const fVikin = document.querySelector('.footer-name-baffait');
@@ -2453,61 +2457,40 @@ function setupProjectsSection() {
         }
     } else {
         PROJECTS = {
-            'cyberdiag': {
-                desc: isEn ? "Showcase website for the CyberDiag app, presenting its features and benefits, and offering download for easy access." : "Site web de présentation de l'application CyberDiag, pour présenter ses fonctionnalités et ses avantages et proposer le téléchargement afin de faciliter son accès.",
-                category: isEn ? 'Website' : 'Site Web',
-                year: '2026',
-                tags: ['Gsap', 'Lenis', 'Three.js'],
-                images: ['assets/images/projects/CyberDiagWebsite/image1.png', 'assets/images/projects/CyberDiagWebsite/image2.png', 'assets/images/projects/CyberDiagWebsite/image3.png'],
-            },
-            'anima': {
-                desc: isEn ? "Website about animal rights, created to practice web animations with tools like GSAP and Lenis." : "Site web sur la cause animale afin de m'exercer à la création d'animations web avec des outils comme GSAP ou Lenis.",
-                category: isEn ? 'Website' : 'Site Web',
-                year: '2026',
-                tags: ['Gsap', 'Lenis'],
-                images: ['assets/images/projects/Anima/image1.png', 'assets/images/projects/Anima/image2.png', 'assets/images/projects/Anima/image3.png'],
-            },
-            'cyberdiag-app': {
-                desc: isEn ? "Desktop application designed for SMEs to perform comprehensive cybersecurity diagnostics. Intuitive interface to assess vulnerabilities and provide tailored recommendations." : "Application conçue pour les PME afin de réaliser des diagnostics de développement backend complets. Interface intuitive pour évaluer les vulnérabilités et proposer des recommandations personnalisées.",
-                category: isEn ? 'Desktop App' : 'Application Desktop',
-                year: '2026',
-                tags: ['Python', 'Gsap', 'Three.js'],
-                images: ['assets/images/projects/cyberdiag/image1.png', 'assets/images/projects/cyberdiag/image2.png', 'assets/images/projects/cyberdiag/image3.png'],
-            },
-            'zenith': {
-                desc: isEn ? "Innovative web browser focused on privacy and performance, featuring a built-in ad blocker, optimized tab management, and extensive customization." : "Navigateur web innovant axé sur la confidentialité et la performance, avec bloqueur de publicités intégré, gestion optimisée des onglets et personnalisation poussée.",
-                category: isEn ? 'Desktop App' : 'Application Desktop',
-                year: '2026',
-                tags: ['Electron', 'JavaScript', 'Three.js'],
-                images: ['assets/images/projects/Zenith/image1.png', 'assets/images/projects/Zenith/image2.png', 'assets/images/projects/Zenith/image3.png'],
-            },
-            'skymcdb': {
-                desc: isEn ? "A powerful and intuitive tool designed to manage, organize, and optimize your Minecraft building projects, developed specifically for builders." : "Un outil puissant et intuitif conçu pour gérer, organiser et optimiser vos projets de construction Minecraft, développé spécifiquement pour les builders.",
-                category: isEn ? 'Desktop App' : 'Application Desktop',
+            'food-delivery': {
+                desc: isEn ? 'Built two React Native apps supporting 190+ menu items and 150+ daily orders in live production. Secure Node.js, Express, Prisma, and PostgreSQL backend.' : 'Développement de deux applications React Native (190+ articles, 150+ commandes/jour). Backend sécurisé Node.js, Express, Prisma, PostgreSQL.',
+                category: isEn ? 'Mobile App' : 'App Mobile',
                 year: '2024',
-                tags: ['Java', 'JavaFX', 'CSS'],
-                images: ['assets/images/projects/skymcdb/image.png', 'assets/images/projects/skymcdb/image2.png', 'assets/images/projects/skymcdb/image3.png', 'assets/images/projects/skymcdb/image4.png'],
+                tags: ['React Native', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Stripe', 'WebSockets'],
+                images: ['food_delivery.png'],
             },
-            'chromablock': {
-                desc: isEn ? "Web adaptation of SkymcDB to reach a wider audience, introducing brand new features for Minecraft builders." : "Adaptation web de SkymcDB, pour élargir l'audience, permettant des fonctionnalités inédites dans le domaine du build Minecraft.",
-                category: 'Web Application',
+            'sports-club': {
+                desc: isEn ? 'Full-stack web system with responsive frontend interfaces using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.' : 'Système web full-stack avec interfaces responsive en React, HTML5, CSS3 et Tailwind. Intégration d\'API REST et déploiement Netlify.',
+                category: isEn ? 'Web Application' : 'Application Web',
                 year: '2024',
-                tags: ['JavaScript', 'HTML', 'CSS'],
-                images: ['assets/images/projects/chromablock/image1.png', 'assets/images/projects/chromablock/image2.png', 'assets/images/projects/chromablock/image3.png'],
+                tags: ['React.js', 'Tailwind CSS', 'REST API', 'Netlify'],
+                images: ['sports_club.png'],
             },
-            'symphony': {
-                desc: isEn ? "Web application allowing users to host and stream their music, as well as discover music published by others on the platform." : "Application web permettant aux utilisateurs d'héberger et lire leurs musiques ainsi que celles publiées par d'autres utilisateurs sur la plateforme.",
-                category: 'Web Application',
+            'durr-cts': {
+                desc: isEn ? 'Desktop solution for equipment diagnostics featuring a Python parser for tag extraction and a multi-user SQLite database with automatic conflict resolution.' : 'Solution de bureau pour le diagnostic d\'équipements, avec un parseur Python pour l\'extraction de données et une base SQLite multi-utilisateurs.',
+                category: isEn ? 'Desktop Application' : 'Application Desktop',
                 year: '2024',
-                tags: ['Netlify Functions', 'JavaScript', 'HTML/CSS'],
-                images: ['assets/images/projects/symphony/image2.png', 'assets/images/projects/symphony/image.png', 'assets/images/projects/symphony/image3.png'],
+                tags: ['Python', 'SQLite', 'SharePoint', 'OneDrive', 'Pytest'],
+                images: ['assets/images/projects/Covers/CyberDiag.avif'],
             },
-            'echo': {
-                desc: isEn ? "Web interface to interact and chat with a local Artificial Intelligence (Qwen). Smooth and private conversational experience." : "Interface web permettant d'interagir et discuter avec une intelligence artificielle fonctionnant en local (Qwen). Expérience conversationnelle fluide et privée.",
-                category: isEn ? 'AI / Web' : 'IA / Web',
-                year: '2024',
-                tags: ['JavaScript', 'HTML/CSS', 'AI Local'],
-                images: ['assets/images/projects/echo/image.png'],
+            'healthcare-nlp': {
+                desc: isEn ? 'Python Flask backend application for healthcare symptom classification and RESTful APIs using NLP intent classification with 80% accuracy.' : 'Backend Python (Flask) pour la classification de symptômes médicaux par traitement automatique du langage naturel (NLP) avec 80% de précision.',
+                category: isEn ? 'AI / Backend API' : 'IA / API Backend',
+                year: '2023',
+                tags: ['Python', 'Flask', 'NLP', 'TF-IDF', 'N-grams'],
+                images: ['healthcare_nlp.png'],
+            },
+            'aws-infra': {
+                desc: isEn ? 'Provisioned and configured AWS EC2 instances, security groups, and network access rules for secure cloud lifecycle management.' : 'Provisionnement et configuration d\'instances AWS EC2, de groupes de sécurité et de règles réseau pour une gestion sécurisée du cycle de vie cloud.',
+                category: isEn ? 'Cloud / DevOps' : 'Cloud / DevOps',
+                year: '2025',
+                tags: ['AWS', 'EC2', 'Security Groups', 'Infrastructure'],
+                images: ['aws_infra.png'],
             },
         };
     }

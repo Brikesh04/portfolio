@@ -105,8 +105,8 @@ const INITIAL_PROJECTS = [
 
 const INITIAL_SETTINGS = {
     "id": 1,
-    "first_name": "Brikesh Vikin",
-    "last_name": "Gowrish",
+    "first_name": "Brikesh",
+    "last_name": "Vikin Gowrish",
     "email": "brikeshvikin13@gmail.com",
     "linkedin_url": "https://www.linkedin.com/in/brikesh-vikin-gowrish/",
     "github_url": "https://github.com/Brikesh04",
