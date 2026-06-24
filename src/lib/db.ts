@@ -1,13 +1,26 @@
 import { createClient } from '@supabase/supabase-js';
 import { Settings, Project } from './types';
 
-const SUPABASE_URL = process.env.SUPABASE_URL || '';
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+let supabaseClient: any = null;
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+function getSupabase() {
+  if (!supabaseClient) {
+    const url = process.env.SUPABASE_URL;
+    const key = process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!url || !key) {
+      throw new Error('Supabase credentials (SUPABASE_URL and SUPABASE_ANON_KEY/SUPABASE_SERVICE_ROLE_KEY) are missing in environment variables.');
+    }
+    if (typeof global.WebSocket === 'undefined') {
+      (global as any).WebSocket = class {};
+    }
+    supabaseClient = createClient(url, key);
+  }
+  return supabaseClient;
+}
 
 export async function getSettings(): Promise<Settings> {
   try {
+    const supabase = getSupabase();
     const { data, error } = await supabase
       .from('settings')
       .select('*')
@@ -27,6 +40,7 @@ export async function getSettings(): Promise<Settings> {
 
 export async function saveSettings(settings: Settings): Promise<boolean> {
   try {
+    const supabase = getSupabase();
     const payload = { ...settings, id: 1 };
     const { error } = await supabase
       .from('settings')
@@ -45,6 +59,7 @@ export async function saveSettings(settings: Settings): Promise<boolean> {
 
 export async function getProjects(): Promise<Project[]> {
   try {
+    const supabase = getSupabase();
     const { data, error } = await supabase
       .from('projects')
       .select('*');
@@ -62,6 +77,7 @@ export async function getProjects(): Promise<Project[]> {
 
 export async function saveProjects(projects: Project[]): Promise<boolean> {
   try {
+    const supabase = getSupabase();
     const newIds = new Set(projects.map(p => p.id));
     const { data: existingData, error: fetchError } = await supabase
       .from('projects')
@@ -72,8 +88,8 @@ export async function saveProjects(projects: Project[]): Promise<boolean> {
       return false;
     }
     
-    const existingIds = existingData.map((d: any) => d.id);
-    const idsToDelete = existingIds.filter(id => !newIds.has(id));
+    const existingIds: string[] = (existingData || []).map((d: any) => d.id);
+    const idsToDelete = existingIds.filter((id: string) => !newIds.has(id));
     
     if (idsToDelete.length > 0) {
       const { error: deleteError } = await supabase

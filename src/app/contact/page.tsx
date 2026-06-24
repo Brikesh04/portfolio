@@ -1,6 +1,8 @@
 import { getSettings } from '@/lib/db';
 import Script from 'next/script';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ContactPage() {
   const settings = await getSettings();
   const T = settings.translations?.fr || {};
