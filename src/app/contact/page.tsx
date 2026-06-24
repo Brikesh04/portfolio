@@ -5,7 +5,10 @@ export const dynamic = 'force-dynamic';
 
 export default async function ContactPage() {
   const settings = await getSettings();
-  const T = settings.translations?.fr || {};
+
+  const email = settings.email || 'brikeshvikin13@gmail.com';
+  const linkedinUrl = settings.linkedin_url || 'https://www.linkedin.com/in/brikesh-vikin/';
+  const githubUrl = settings.github_url || 'https://github.com/BrikeshG';
 
   return (
     <>
@@ -18,60 +21,60 @@ export default async function ContactPage() {
 
       <div className="page-title" id="page-title">Contact</div>
 
-      <a className="back-btn" id="back-btn" href="/" aria-label="Retour à l'accueil">
+      <a className="back-btn" id="back-btn" href="/" aria-label="Back to home">
         <span className="chr-hover" data-chr="Back"></span>
       </a>
 
       <main className="info-main contact-main" id="contact-main">
         <section className="info-left contact-left">
           <div className="contact-panel">
-            <h2 className="contact-panel-title" data-i18n="contact.panel.title">{T['contact.panel.title'] || 'Parlons de votre projet.'}</h2>
-            <p className="contact-panel-copy" data-i18n="contact.panel.copy">
-              {T['contact.panel.copy'] || "Je reponds rapidement aux demandes d'alternance, de mission freelance et aux collaborations autour d'experiences web interactives."}
+            <h2 className="contact-panel-title">Let&apos;s talk about your project.</h2>
+            <p className="contact-panel-copy">
+              I respond quickly to internship requests, freelance missions and collaborations around interactive web experiences.
             </p>
           </div>
           <div className="info-meta">
-            <span className="info-meta-label" data-i18n="contact.meta.base">{T['contact.meta.base'] || 'Base'}</span>
-            <span className="info-meta-value" data-i18n="contact.meta.base.value">{T['contact.meta.base.value'] || 'Chennai, India'}</span>
+            <span className="info-meta-label">Based in</span>
+            <span className="info-meta-value">Chennai, India</span>
           </div>
           <div className="info-meta">
-            <span className="info-meta-label" data-i18n="contact.meta.status">{T['contact.meta.status'] || 'Statut'}</span>
-            <span className="info-meta-value" data-i18n="contact.meta.status.value">{T['contact.meta.status.value'] || 'Étudiant / Freelance'}</span>
+            <span className="info-meta-label">Status</span>
+            <span className="info-meta-value">Student / Freelance</span>
           </div>
           <div className="info-meta">
-            <span className="info-meta-label" data-i18n="contact.meta.delay">{T['contact.meta.delay'] || 'Delai moyen'}</span>
-            <span className="info-meta-value" data-i18n="contact.meta.delay.value">{T['contact.meta.delay.value'] || '48h'}</span>
+            <span className="info-meta-label">Avg. response</span>
+            <span className="info-meta-value">48h</span>
           </div>
         </section>
 
         <section className="info-right contact-right">
           <div className="info-headline">
-            <span className="info-eyebrow" data-i18n="contact.eyebrow">{T['contact.eyebrow'] || 'Contact'}</span>
-            <h1 className="info-name">Let&rsquo;s build together.</h1>
-            <p className="info-role" data-i18n="contact.role">{T['contact.role'] || 'Creative developer, axé animation, interaction, et experiences web sur mesure.'}</p>
+            <span className="info-eyebrow">Contact</span>
+            <h1 className="info-name">Let&apos;s build together.</h1>
+            <p className="info-role">Creative developer, focused on animation, interaction, and tailor-made web experiences.</p>
           </div>
 
-          <p className="info-desc" data-i18n="contact.desc">
-            {T['contact.desc'] || 'Si vous avez un projet en tête, une idée ambitieuse, je serais ravi d\'échanger avec vous afin d\'en discuter et d\'explorer une potentielle collaboration.'}
+          <p className="info-desc">
+            If you have a project in mind, an ambitious idea, I&apos;d be glad to discuss it with you and explore a potential collaboration.
           </p>
 
           <div className="contact-links">
             <div className="skill-col">
-              <div className="skill-col-title" data-i18n="contact.shortcuts">{T['contact.shortcuts'] || 'Raccourcis'}</div>
+              <div className="skill-col-title">Shortcuts</div>
               <ul>
-                <li><a className="contact-link" href={`mailto:${settings.email}`} data-i18n="contact.maildirect">{T['contact.maildirect'] || 'Mail direct'}</a></li>
-                <li><a className="contact-link" href={settings.linkedin_url || "https://www.linkedin.com/in/brikesh-vikin/"} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a className="contact-link" href={settings.github_url || "https://github.com/BrikeshG"} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a className="contact-link" href={`mailto:${email}`}>Direct email</a></li>
+                <li><a className="contact-link" href={linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a className="contact-link" href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a></li>
                 <li><a className="contact-link" href="https://www.behance.net/brikesh" target="_blank" rel="noopener noreferrer">Behance</a></li>
               </ul>
             </div>
             <div className="skill-col">
-              <div className="skill-col-title" data-i18n="contact.brief">{T['contact.brief'] || 'Format de brief'}</div>
+              <div className="skill-col-title">Brief format</div>
               <ul>
-                <li data-i18n="contact.brief.product">{T['contact.brief.product'] || 'Objectif produit'}</li>
-                <li data-i18n="contact.brief.deadline">{T['contact.brief.deadline'] || 'Deadline visee'}</li>
-                <li data-i18n="contact.brief.stack">{T['contact.brief.stack'] || 'Stack technique'}</li>
-                <li data-i18n="contact.brief.deliverables">{T['contact.brief.deliverables'] || 'Livrables attendus'}</li>
+                <li>Product goal</li>
+                <li>Target deadline</li>
+                <li>Tech stack</li>
+                <li>Expected deliverables</li>
               </ul>
             </div>
           </div>
@@ -79,7 +82,7 @@ export default async function ContactPage() {
       </main>
 
       <div className="info-bottom" id="contact-bottom">
-        <a className="info-mail chr-hover" data-chr={settings.email} href={`mailto:${settings.email}`}></a>
+        <a className="info-mail chr-hover" data-chr={email} href={`mailto:${email}`}></a>
         <span className="info-version">AVAILABLE 2026</span>
       </div>
 

@@ -45,9 +45,9 @@ const INITIAL_PROJECTS = [
         "category_fr": "App Mobile",
         "year": "2024",
         "tags": ["React Native", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Stripe", "WebSockets"],
-        "img": "food_delivery.png",
+        "img": "/food_delivery.png",
         "date": "09 2024",
-        "images": ["food_delivery.png"]
+        "images": ["/food_delivery.png"]
     },
     {
         "id": "sports-club",
@@ -58,9 +58,9 @@ const INITIAL_PROJECTS = [
         "category_fr": "Application Web",
         "year": "2024",
         "tags": ["React.js", "Tailwind CSS", "REST API", "Netlify"],
-        "img": "sports_club.png",
+        "img": "/sports_club.png",
         "date": "06 2024",
-        "images": ["sports_club.png"]
+        "images": ["/sports_club.png"]
     },
     {
         "id": "durr-cts",
@@ -71,9 +71,9 @@ const INITIAL_PROJECTS = [
         "category_fr": "Application Desktop",
         "year": "2024",
         "tags": ["Python", "SQLite", "SharePoint", "OneDrive", "Pytest"],
-        "img": "assets/images/projects/Covers/CyberDiag.avif",
+        "img": "/assets/images/projects/Covers/CyberDiag.avif",
         "date": "11 2024",
-        "images": ["assets/images/projects/Covers/CyberDiag.avif"]
+        "images": ["/assets/images/projects/Covers/CyberDiag.avif"]
     },
     {
         "id": "healthcare-nlp",
@@ -84,9 +84,9 @@ const INITIAL_PROJECTS = [
         "category_fr": "IA / API Backend",
         "year": "2023",
         "tags": ["Python", "Flask", "NLP", "TF-IDF", "N-grams"],
-        "img": "healthcare_nlp.png",
+        "img": "/healthcare_nlp.png",
         "date": "05 2023",
-        "images": ["healthcare_nlp.png"]
+        "images": ["/healthcare_nlp.png"]
     },
     {
         "id": "aws-infra",
@@ -97,9 +97,9 @@ const INITIAL_PROJECTS = [
         "category_fr": "Cloud / DevOps",
         "year": "2025",
         "tags": ["AWS", "EC2", "Security Groups", "Infrastructure"],
-        "img": "aws_infra.png",
+        "img": "/aws_infra.png",
         "date": "11 2025",
-        "images": ["aws_infra.png"]
+        "images": ["/aws_infra.png"]
     }
 ];
 
@@ -110,7 +110,7 @@ const INITIAL_SETTINGS = {
     "email": "brikeshvikin13@gmail.com",
     "linkedin_url": "https://www.linkedin.com/in/brikesh-vikin-gowrish/",
     "github_url": "https://github.com/Brikesh04",
-    "photo_url": "portrait.png",
+    "photo_url": "/portrait.png",
     "translations": {
         "en": {
             "meta.description": "Software developer specialized in backend APIs, mobile apps, and full-stack web systems. Discover my projects.",

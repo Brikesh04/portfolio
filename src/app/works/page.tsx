@@ -4,9 +4,6 @@ import Script from 'next/script';
 export const dynamic = 'force-dynamic';
 
 export default async function WorksPage() {
-  const settings = await getSettings();
-  const T = settings.translations?.fr || {};
-
   return (
     <>
       <link rel="stylesheet" href="/styles/works.css" />
@@ -14,11 +11,11 @@ export default async function WorksPage() {
       <div className="intro-overlay" id="intro-overlay"></div>
       <div className="page-title" id="page-title">Work</div>
 
-      <h1 className="sr-only" data-i18n="works.h1">
-        {T['works.h1'] || "Projets — Brikesh Vikin, Creative Developer. Découvrez mes réalisations en développement web, animation et design interactif."}
+      <h1 className="sr-only">
+        Projects — Brikesh Vikin, Creative Developer. Discover my work in web development, animation and interactive design.
       </h1>
 
-      <a className="back-btn" id="back-btn" href="/" aria-label="Retour à l'accueil">
+      <a className="back-btn" id="back-btn" href="/" aria-label="Back to home">
         <span className="chr-hover" data-chr="Back"></span>
       </a>
 

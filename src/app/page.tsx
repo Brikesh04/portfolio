@@ -5,19 +5,58 @@ export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
   const settings = await getSettings();
-  const T = settings.translations?.fr || {};
+
+  const email = settings.email || 'brikeshvikin13@gmail.com';
+  const linkedinUrl = settings.linkedin_url || 'https://www.linkedin.com/in/brikesh-vikin/';
+  const githubUrl = settings.github_url || 'https://github.com/BrikeshG';
+  const firstName = settings.first_name || 'Brikesh';
+  const lastName = settings.last_name || 'Vikin';
 
   return (
     <>
-      <link rel="stylesheet" href="/styles/index.css" />
+      <script dangerouslySetInnerHTML={{ __html: `
+        window.addEventListener('error', function(e) {
+          var div = document.createElement('div');
+          div.style.position = 'fixed';
+          div.style.top = '0';
+          div.style.left = '0';
+          div.style.width = '100%';
+          div.style.background = 'red';
+          div.style.color = 'white';
+          div.style.padding = '10px';
+          div.style.zIndex = '999999';
+          div.style.fontSize = '14px';
+          div.style.fontFamily = 'monospace';
+          div.style.wordBreak = 'break-all';
+          div.textContent = 'Error: ' + e.message + ' at ' + e.filename + ':' + e.lineno + ':' + e.colno;
+          document.body.appendChild(div);
+        });
+        window.addEventListener('unhandledrejection', function(e) {
+          var div = document.createElement('div');
+          div.style.position = 'fixed';
+          div.style.top = '0';
+          div.style.left = '0';
+          div.style.width = '100%';
+          div.style.background = 'darkred';
+          div.style.color = 'white';
+          div.style.padding = '10px';
+          div.style.zIndex = '999999';
+          div.style.fontSize = '14px';
+          div.style.fontFamily = 'monospace';
+          div.style.wordBreak = 'break-all';
+          div.textContent = 'Unhandled Rejection: ' + e.reason;
+          document.body.appendChild(div);
+        });
+      ` }} />
+      <link rel="stylesheet" href="/styles/index.css?v=5" />
 
       <div className="intro-bg" id="intro-bg"></div>
 
       <div className="name-layer" id="name-layer">
         <div className="preloader-content" id="preloader-content">
-          <div id="preloader-logo">B</div>
-          <span id="preloader-luke">rikesh</span>
-          <span id="preloader-baffait"> Vikin</span>
+          <div id="preloader-logo">{firstName[0]}</div>
+          <span id="preloader-luke">{firstName.slice(1)}</span>
+          <span id="preloader-baffait"> {lastName}</span>
           <span id="preloader-dot">.</span>
         </div>
       </div>
@@ -29,17 +68,16 @@ export default async function HomePage() {
 
       <div className="scroll-wrap" id="scroll-wrap">
         <section className="hero" id="hero">
-          <h1 className="sr-only" data-i18n="index.h1">
-            {T['index.h1'] || "Brikesh Vikin — Creative Developer, étudiant en informatique à Chennai, spécialisé en développement web, animation et design interactif."}
+          <h1 className="sr-only">
+            {firstName} {lastName} — Creative Developer, Computer Science student in Chennai, specialized in web development, animation and interactive design.
           </h1>
           <div className="hero-canvas" id="hero-canvas"></div>
 
           <div className="hero-content">
-            <div 
-              className="hero-tagline" 
-              id="hero-tagline" 
-              data-i18n="index.hero.tagline"
-              dangerouslySetInnerHTML={{ __html: T['index.hero.tagline'] || 'Créatif discret, <span class="other-accent">je donne vie</span> aux idées,<br> entre mouvement, détail et douceur.' }}
+            <div
+              className="hero-tagline"
+              id="hero-tagline"
+              dangerouslySetInnerHTML={{ __html: 'Quiet creator, <span class="other-accent">bringing ideas to life</span>,<br>through motion, detail and softness.' }}
             />
 
             <div className="hero-line" id="hero-line"></div>
@@ -47,14 +85,14 @@ export default async function HomePage() {
               <div className="hero-bar-left">
                 <span className="chr-hover" data-chr="🡺V3.0"></span>
               </div>
-              <nav className="hero-bar-center" aria-label="Réseaux sociaux">
+              <nav className="hero-bar-center" aria-label="Social links">
                 <a className="chr-hover" data-chr="Behance" href="https://www.behance.net/brikesh" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
                 <span className="sep" aria-hidden="true">/</span>
-                <a className="chr-hover" data-chr="LinkedIn" href={settings.linkedin_url || "https://www.linkedin.com/in/brikesh-vikin/"} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+                <a className="chr-hover" data-chr="LinkedIn" href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
                 <span className="sep" aria-hidden="true">/</span>
-                <a className="chr-hover" data-chr="GitHub" href={settings.github_url || "https://github.com/BrikeshG"} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+                <a className="chr-hover" data-chr="GitHub" href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
               </nav>
-              <nav className="hero-bar-right" aria-label="Navigation principale">
+              <nav className="hero-bar-right" aria-label="Main navigation">
                 <a className="chr-hover" data-chr="Work" href="/works" data-page-link="work" aria-label="Work"></a>
                 <a className="chr-hover" data-chr="Info" href="/info" data-page-link="info" aria-label="Info"></a>
                 <a className="chr-hover" data-chr="Contact" href="/contact" data-page-link="contact" aria-label="Contact"></a>
@@ -78,20 +116,18 @@ export default async function HomePage() {
 
       <section className="section-after" id="section-after">
         <div className="about" id="about">
-          <div 
-            className="about-text" 
-            id="about-text" 
-            data-i18n="index.about.text"
-            dangerouslySetInnerHTML={{ __html: T['index.about.text'] || 'En tant que<span class="other-accent"> creative developer</span>, je conçois des expériences web sur mesure , en mêlant précision technique et <span class="other-accent">emotion</span>.' }}
+          <div
+            className="about-text"
+            id="about-text"
+            dangerouslySetInnerHTML={{ __html: 'As a <span class="other-accent">creative developer</span>, I craft tailor-made web experiences, blending technical precision and <span class="other-accent">emotion</span>.' }}
           />
-          <div 
-            className="about-sub" 
-            id="about-sub" 
-            data-i18n="index.about.sub"
-            dangerouslySetInnerHTML={{ __html: T['index.about.sub'] || "Je m'appelle Brikesh. Créatif passionné, je suis étudiant en informatique à Chennai, et je produis des expériences digitales mémorables, toujours à la recherche d'une symbiose entre l'art et l'information." }}
+          <div
+            className="about-sub"
+            id="about-sub"
+            dangerouslySetInnerHTML={{ __html: `My name is ${firstName}. A passionate creator and Computer Science student in Chennai, I build memorable digital experiences, always seeking the symbiosis between art and information.` }}
           />
           <div className="about-btn">
-            <a className="chr-hover" data-chr="Info" href="/info" data-page-link="info" aria-label="En savoir plus sur moi"></a>
+            <a className="chr-hover" data-chr="Info" href="/info" data-page-link="info" aria-label="Learn more about me"></a>
           </div>
           <div className="about-version">
             <svg style={{ width: '1.25em', height: '1.25em', verticalAlign: '-0.25em' }} viewBox="0 0 84 85" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +135,7 @@ export default async function HomePage() {
             </svg>V3.0
           </div>
           <div className="about-photo-wrap" id="about-photo-wrap">
-            <img className="about-photo" src="/assets/images/profile/me.avif" alt="Brikesh Vikin" decoding="async" width="2500" height="3001" />
+            <img className="about-photo" src="/assets/images/profile/me.avif" alt={`${firstName} ${lastName}`} decoding="async" width="2500" height="3001" />
           </div>
         </div>
 
@@ -132,11 +168,10 @@ export default async function HomePage() {
           <img className="cg-img" src="/assets/images/projects/Covers/CyberDiag.avif" alt="Inspection Data Manager" width="1333" height="1000" />
           <img className="cg-img" src="/healthcare_nlp.png" alt="Healthcare NLP Chatbot" width="3000" height="2250" />
           <img className="cg-img" src="/aws_infra.png" alt="AWS Cloud Infrastructure" width="3000" height="2250" />
-          <p 
-            className="cg-phrase" 
-            id="cg-phrase" 
-            data-i18n="index.cg.phrase"
-            dangerouslySetInnerHTML={{ __html: T['index.cg.phrase'] || 'Chaque projet est une occasion d\'<span class="other-accent">apprendre</span>, d\'<span class="other-accent">expérimenter</span> et de repousser mes limites.' }}
+          <p
+            className="cg-phrase"
+            id="cg-phrase"
+            dangerouslySetInnerHTML={{ __html: 'Each project is a chance to <span class="other-accent">learn</span>, <span class="other-accent">experiment</span> and push my limits.' }}
           />
         </div>
       </section>
@@ -144,13 +179,13 @@ export default async function HomePage() {
       <section className="skills" id="skills">
         <div className="skills-inner">
           <div className="skills-left">
-            <div className="skills-subtitle" data-i18n="index.skills.subtitle">Compétences</div>
-            <div className="skills-text" data-i18n="index.skills.text">
-              {T['index.skills.text'] || "Étudiant en BUT Informatique à Chennai, spécialisé en développement backend, passionné par le développement et le design web."}
+            <div className="skills-subtitle">Skills</div>
+            <div className="skills-text">
+              Computer Science student in Chennai, specialized in backend development, passionate about web development and design.
             </div>
             <div className="skills-separator"></div>
             <div>
-              <a className="skills-contact chr-hover" data-chr="Contact me🞣" href="/contact" data-page-link="contact" aria-label="Me contacter"></a>
+              <a className="skills-contact chr-hover" data-chr="Contact me🞣" href="/contact" data-page-link="contact" aria-label="Contact me"></a>
             </div>
             <div className="skills-arrow" id="skills-arrow">
               <svg style={{ width: '1.25em', height: '1.25em', verticalAlign: '-0.25em' }} viewBox="0 0 84 85" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +196,7 @@ export default async function HomePage() {
           <div className="skills-right" id="skills-right">
             <div className="skill-group open" data-group="frontend">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.frontend">Frontend</span>
+                <span className="skill-header-title">Frontend</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
@@ -171,13 +206,13 @@ export default async function HomePage() {
                   <li>TypeScript</li>
                   <li>Tailwind CSS</li>
                   <li>NativeWind</li>
-                  <li>HTML5 & CSS3</li>
+                  <li>HTML5 &amp; CSS3</li>
                 </ul>
               </div>
             </div>
             <div className="skill-group" data-group="animation">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.animation">Backend</span>
+                <span className="skill-header-title">Backend</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
@@ -194,7 +229,7 @@ export default async function HomePage() {
             </div>
             <div className="skill-group" data-group="backend">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.backend">Databases</span>
+                <span className="skill-header-title">Databases</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
@@ -208,7 +243,7 @@ export default async function HomePage() {
             </div>
             <div className="skill-group" data-group="database">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.database">Cloud & DevOps</span>
+                <span className="skill-header-title">Cloud &amp; DevOps</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
@@ -224,7 +259,7 @@ export default async function HomePage() {
             </div>
             <div className="skill-group" data-group="devops">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.devops">AI & Tools</span>
+                <span className="skill-header-title">AI &amp; Tools</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
@@ -237,7 +272,7 @@ export default async function HomePage() {
             </div>
             <div className="skill-group" data-group="sysadmin">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.security">Core Concepts</span>
+                <span className="skill-header-title">Core Concepts</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
@@ -251,7 +286,7 @@ export default async function HomePage() {
             </div>
             <div className="skill-group" data-group="design">
               <div className="skill-header">
-                <span className="skill-header-title" data-i18n="index.skills.design">Languages</span>
+                <span className="skill-header-title">Languages</span>
                 <span className="skill-header-icon"></span>
               </div>
               <div className="skill-body">
@@ -277,9 +312,8 @@ export default async function HomePage() {
           <div className="contact-title" id="contact-title">Contact</div>
 
           <div className="contact-dispo" id="contact-dispo">
-            <p 
-              data-i18n="index.contact.dispo1"
-              dangerouslySetInnerHTML={{ __html: T['index.contact.dispo1'] || 'À la recherche d\'une <span class="other-accent">alternance</span> à partir de septembre. Motivé à rejoindre une équipe innovante et à contribuer à des projets ambitieux.' }}
+            <p
+              dangerouslySetInnerHTML={{ __html: 'Looking for an <span class="other-accent">internship</span> starting September. Eager to join an innovative team and contribute to ambitious projects.' }}
             />
           </div>
 
@@ -292,9 +326,8 @@ export default async function HomePage() {
           </div>
 
           <div className="contact-dispo" id="contact-dispo-2">
-            <p 
-              data-i18n="index.contact.dispo2"
-              dangerouslySetInnerHTML={{ __html: T['index.contact.dispo2'] || 'Je suis disponible pour <span class="other-accent">des missions en freelance</span> partout dans le monde, sur <span class="other-accent">vos projets ambitieux</span> et des collaborations internationales.' }}
+            <p
+              dangerouslySetInnerHTML={{ __html: 'Available for <span class="other-accent">freelance missions worldwide</span>, on <span class="other-accent">your ambitious projects</span> and international collaborations.' }}
             />
           </div>
 
@@ -307,12 +340,12 @@ export default async function HomePage() {
           </div>
 
           <div className="contact-bottom" id="contact-bottom">
-            <nav className="contact-socials" id="contact-socials" aria-label="Réseaux sociaux">
-              <a className="chr-hover" data-chr-contact="GitHub" href={settings.github_url || "https://github.com/BrikeshG"} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
-              <a className="chr-hover" data-chr-contact="LinkedIn" href={settings.linkedin_url || "https://www.linkedin.com/in/brikesh-vikin/"} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+            <nav className="contact-socials" id="contact-socials" aria-label="Social links">
+              <a className="chr-hover" data-chr-contact="GitHub" href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+              <a className="chr-hover" data-chr-contact="LinkedIn" href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
               <a className="chr-hover" data-chr-contact="Behance" href="https://www.behance.net/brikesh" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
             </nav>
-            <a className="contact-mail" id="contact-mail" href={`mailto:${settings.email}`}>{settings.email}</a>
+            <a className="contact-mail" id="contact-mail" href={`mailto:${email}`}>{email}</a>
           </div>
         </div>
       </section>
@@ -322,15 +355,15 @@ export default async function HomePage() {
         <div className="footer-content" id="footer-content">
           <div className="footer-top">
             <div className="footer-top-col">
-              <a className="chr-hover footer-mail" data-chr-footer={settings.email} href={`mailto:${settings.email}`} aria-label="Envoyer un mail"></a>
+              <a className="chr-hover footer-mail" data-chr-footer={email} href={`mailto:${email}`} aria-label="Send an email"></a>
               <span className="chr-hover footer-date" data-chr-footer="© 2026"></span>
             </div>
-            <nav className="footer-top-col" aria-label="Réseaux sociaux">
-              <a className="chr-hover" data-chr-footer="GitHub" href={settings.github_url || "https://github.com/BrikeshG"} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
-              <a className="chr-hover" data-chr-footer="LinkedIn" href={settings.linkedin_url || "https://www.linkedin.com/in/brikesh-vikin/"} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+            <nav className="footer-top-col" aria-label="Social links">
+              <a className="chr-hover" data-chr-footer="GitHub" href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+              <a className="chr-hover" data-chr-footer="LinkedIn" href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
               <a className="chr-hover" data-chr-footer="Behance" href="https://www.behance.net/brikesh" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
             </nav>
-            <nav className="footer-top-col" aria-label="Navigation pied de page">
+            <nav className="footer-top-col" aria-label="Footer navigation">
               <a className="chr-hover" data-chr-footer="Work" href="/works" data-page-link="work" aria-label="Work"></a>
               <a className="chr-hover" data-chr-footer="Info" href="/info" data-page-link="info" aria-label="Info"></a>
               <a className="chr-hover" data-chr-footer="Contact" href="/contact" data-page-link="contact" aria-label="Contact"></a>
@@ -346,11 +379,11 @@ export default async function HomePage() {
           </div>
           <div className="footer-name">
             <span className="footer-name-luke">
-              <span className="first-letter">{settings.first_name ? settings.first_name[0] : 'B'}</span>
-              {settings.first_name ? settings.first_name.slice(1) : 'rikesh'}
+              <span className="first-letter">{firstName[0]}</span>
+              {firstName.slice(1)}
             </span>
             <span className="footer-name-baffait-wrap">
-              <span className="footer-name-baffait">{settings.last_name || 'Vikin'}</span>
+              <span className="footer-name-baffait">{lastName}</span>
               <span className="footer-name-dot">.</span>
             </span>
           </div>
@@ -374,7 +407,7 @@ export default async function HomePage() {
       <div className="work-flying-text" id="work-flying-text">Work</div>
 
       <section className="project-detail" id="project-detail">
-        <div className="detail-back chr-hover" id="detail-back" data-chr="🡼RETOUR" data-i18n-attr="data-chr:index.detail.back"></div>
+        <div className="detail-back chr-hover" id="detail-back" data-chr="🡼BACK"></div>
         <div className="detail-info">
           <div className="detail-title-wrap" id="detail-title-wrap">
             <h1 className="detail-title" id="detail-title"></h1>
@@ -398,10 +431,10 @@ export default async function HomePage() {
       </div>
 
       {/* Page Specific Scripts */}
-      <Script src="/js/i18n.js" strategy="afterInteractive" />
-      <Script src="/js/core-renderer.js" strategy="afterInteractive" />
-      <Script src="/js/hero-project.js" strategy="afterInteractive" />
-      <Script src="/js/index.js" strategy="afterInteractive" />
+      <Script src="/js/i18n.js?v=5" strategy="afterInteractive" />
+      <Script src="/js/core-renderer.js?v=5" strategy="afterInteractive" />
+      <Script src="/js/hero-project.js?v=5" strategy="afterInteractive" />
+      <Script src="/js/index.js?v=5" strategy="afterInteractive" />
     </>
   );
 }

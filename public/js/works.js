@@ -61,7 +61,7 @@
             category: isEn ? 'Mobile App' : 'App Mobile',
             year: '2024',
             tags: ['React Native', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Stripe', 'WebSockets'],
-            cover: 'food_delivery.png'
+            cover: '/food_delivery.png'
           },
           {
             id: 'sports-club',
@@ -70,7 +70,7 @@
             category: isEn ? 'Web Application' : 'Application Web',
             year: '2024',
             tags: ['React.js', 'Tailwind CSS', 'REST API', 'Netlify'],
-            cover: 'sports_club.png'
+            cover: '/sports_club.png'
           },
           {
             id: 'durr-cts',
@@ -79,7 +79,7 @@
             category: isEn ? 'Desktop Application' : 'Application Desktop',
             year: '2024',
             tags: ['Python', 'SQLite', 'SharePoint', 'OneDrive', 'Pytest'],
-            cover: 'assets/images/projects/Covers/CyberDiag.avif'
+            cover: '/assets/images/projects/Covers/CyberDiag.avif'
           },
           {
             id: 'healthcare-nlp',
@@ -88,7 +88,7 @@
             category: isEn ? 'AI / Backend API' : 'IA / API Backend',
             year: '2023',
             tags: ['Python', 'Flask', 'NLP', 'TF-IDF', 'N-grams'],
-            cover: 'healthcare_nlp.png'
+            cover: '/healthcare_nlp.png'
           },
           {
             id: 'aws-infra',
@@ -97,7 +97,7 @@
             category: isEn ? 'Cloud / DevOps' : 'Cloud / DevOps',
             year: '2025',
             tags: ['AWS', 'EC2', 'Security Groups', 'Infrastructure'],
-            cover: 'aws_infra.png'
+            cover: '/aws_infra.png'
           }
         ];
     }

@@ -5,7 +5,11 @@ export const dynamic = 'force-dynamic';
 
 export default async function InfoPage() {
   const settings = await getSettings();
-  const T = settings.translations?.fr || {};
+
+  const email = settings.email || 'brikeshvikin13@gmail.com';
+  const firstName = settings.first_name || 'Brikesh';
+  const lastName = settings.last_name || 'Vikin';
+  const photoUrl = settings.photo_url || '/assets/images/profile/me.avif';
 
   return (
     <>
@@ -18,45 +22,44 @@ export default async function InfoPage() {
 
       <div className="page-title" id="page-title">Info</div>
 
-      <a className="back-btn" id="back-btn" href="/" aria-label="Retour à l'accueil">
+      <a className="back-btn" id="back-btn" href="/" aria-label="Back to home">
         <span className="chr-hover" data-chr="Back"></span>
       </a>
 
       <main className="info-main" id="info-main">
         <section className="info-left">
           <div className="info-photo-wrap">
-            <img className="info-photo" src={settings.photo_url || "/assets/images/profile/me.avif"} alt={`${settings.first_name} ${settings.last_name}`} decoding="async" />
+            <img className="info-photo" src={photoUrl} alt={`${firstName} ${lastName}`} decoding="async" />
             <span className="frame-corner tl"></span>
             <span className="frame-corner tr"></span>
             <span className="frame-corner bl"></span>
             <span className="frame-corner br"></span>
           </div>
           <div className="info-meta">
-            <span className="info-meta-label" data-i18n="info.meta.based">{T['info.meta.based'] || 'Basé à'}</span>
-            <span className="info-meta-value" data-i18n="info.meta.based.value">{T['info.meta.based.value'] || 'Chennai, India'}</span>
+            <span className="info-meta-label">Based in</span>
+            <span className="info-meta-value">Chennai, India</span>
           </div>
           <div className="info-meta">
-            <span className="info-meta-label" data-i18n="info.meta.status">{T['info.meta.status'] || 'Statut'}</span>
-            <span className="info-meta-value" data-i18n="info.meta.status.value">{T['info.meta.status.value'] || 'En recherche d\'alternance'}</span>
+            <span className="info-meta-label">Status</span>
+            <span className="info-meta-value">Seeking an internship</span>
           </div>
         </section>
 
         <section className="info-right">
           <div className="info-headline">
-            <span className="info-eyebrow" data-i18n="info.eyebrow">{T['info.eyebrow'] || 'À propos'}</span>
-            <h1 className="info-name">{settings.first_name} {settings.last_name}.</h1>
-            <p className="info-role" data-i18n="info.role">{T['info.role'] || 'Creative developer & étudiant en informatique, spécialisé en développement web.'}</p>
+            <span className="info-eyebrow">About</span>
+            <h1 className="info-name">{firstName} {lastName}.</h1>
+            <p className="info-role">Creative developer &amp; Computer Science student, specialized in web development.</p>
           </div>
 
-          <p 
-            className="info-desc" 
-            data-i18n="info.desc"
-            dangerouslySetInnerHTML={{ __html: T['info.desc'] || 'Je conçois des expériences web sur mesure, où la précision technique rencontre l\'émotion. Passionné par l\'animation, l\'interaction et le <span class="other-accent">detail</span>, je cherche toujours la symbiose entre l\'art et l\'information.' }}
+          <p
+            className="info-desc"
+            dangerouslySetInnerHTML={{ __html: 'I craft tailor-made web experiences where technical precision meets emotion. Passionate about animation, interaction and <span class="other-accent">detail</span>, I always seek the symbiosis between art and information.' }}
           />
 
           <div className="info-skills">
             <div className="skill-col">
-              <div className="skill-col-title" data-i18n="info.skills.frontend">{T['info.skills.frontend'] || 'Frontend'}</div>
+              <div className="skill-col-title">Frontend</div>
               <ul>
                 <li>React.js</li>
                 <li>React Native</li>
@@ -66,7 +69,7 @@ export default async function InfoPage() {
               </ul>
             </div>
             <div className="skill-col">
-              <div className="skill-col-title" data-i18n="info.skills.backend">{T['info.skills.backend'] || 'Backend'}</div>
+              <div className="skill-col-title">Backend</div>
               <ul>
                 <li>Node.js · Express</li>
                 <li>Python · Flask</li>
@@ -76,7 +79,7 @@ export default async function InfoPage() {
               </ul>
             </div>
             <div className="skill-col">
-              <div className="skill-col-title" data-i18n="info.skills.animation">{T['info.skills.animation'] || 'Databases'}</div>
+              <div className="skill-col-title">Databases</div>
               <ul>
                 <li>PostgreSQL</li>
                 <li>Supabase</li>
@@ -85,7 +88,7 @@ export default async function InfoPage() {
               </ul>
             </div>
             <div className="skill-col">
-              <div className="skill-col-title" data-i18n="info.skills.security">{T['info.skills.security'] || 'Cloud & DevOps'}</div>
+              <div className="skill-col-title">Cloud &amp; DevOps</div>
               <ul>
                 <li>AWS (EC2, SG)</li>
                 <li>Firebase</li>
@@ -98,7 +101,7 @@ export default async function InfoPage() {
       </main>
 
       <div className="info-bottom" id="info-bottom">
-        <a className="info-mail chr-hover" data-chr={settings.email} href={`mailto:${settings.email}`}></a>
+        <a className="info-mail chr-hover" data-chr={email} href={`mailto:${email}`}></a>
         <span className="info-version">
           <svg style={{ width: '1.25em', height: '1.25em', verticalAlign: '-0.25em' }} viewBox="0 0 84 85" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M11 38H54L37 21H51L73 43L51 65H37L54 48H11Z" />

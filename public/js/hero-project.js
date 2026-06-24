@@ -47,7 +47,7 @@ window._heroProjectData = {
         "heightMode": 2,
         "left": 0.5111111111111111,
         "top": 0.5830043451272502,
-        "src": "assets/images/shader background/background.png",
+        "src": "/assets/images/shader background/background.png",
         "imageNaturalSize": {
             "type": "Vec2",
             "_x": 1432,

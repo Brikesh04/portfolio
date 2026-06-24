@@ -1,13 +1,18 @@
 import '@/styles/globals.css';
 import Script from 'next/script';
 
+export const metadata = {
+  title: 'Brikesh Vikin — Creative Developer',
+  description: 'Creative developer specialized in web interfaces, animation and interactive design. Based in Chennai, India.',
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className="dark">
+    <html lang="en" className="dark">
       <head>
         <meta name="google-site-verification" content="DuKMiQVUXng39V3PKaF0IeQ_YtEvV-UekGxwb4DNcLs" />
         <meta name="theme-color" content="#0a0a0a" />
