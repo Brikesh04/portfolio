@@ -116,7 +116,7 @@ export default async function HomePage() {
           <div className="projects-inner">
             <div className="projects-list" id="projects-list">
               <div className="proj-item" data-id="food-delivery" data-img="/food_delivery.png" data-date="09 2024">Food Delivery Platform</div>
-              <div className="proj-item" data-id="sports-club" data-img="/sports_club.png" data-date="06 2024">Sports Club Platform</div>
+              <div className="proj-item" data-id="sports-club" data-img="/sports_club.png" data-date="06 2024">TuS Cricket Pfarrkirchen</div>
               <div className="proj-item" data-id="durr-cts" data-img="/assets/images/projects/Covers/CyberDiag.avif" data-date="11 2024">Inspection Data Manager</div>
               <div className="proj-item" data-id="healthcare-nlp" data-img="/healthcare_nlp.png" data-date="05 2023">Healthcare NLP Chatbot</div>
               <div className="proj-item" data-id="aws-infra" data-img="/aws_infra.png" data-date="11 2025">AWS Cloud Infrastructure</div>
@@ -128,7 +128,7 @@ export default async function HomePage() {
       <section className="circle-gallery" id="circle-gallery">
         <div className="circle-gallery-pin" id="circle-gallery-pin">
           <img className="cg-img" src="/food_delivery.png" alt="Food Delivery Platform" width="3000" height="2250" />
-          <img className="cg-img" src="/sports_club.png" alt="Sports Club Platform" width="3000" height="2250" />
+          <img className="cg-img" src="/sports_club.png" alt="TuS Cricket Pfarrkirchen" width="3000" height="2250" />
           <img className="cg-img" src="/assets/images/projects/Covers/CyberDiag.avif" alt="Inspection Data Manager" width="1333" height="1000" />
           <img className="cg-img" src="/healthcare_nlp.png" alt="Healthcare NLP Chatbot" width="3000" height="2250" />
           <img className="cg-img" src="/aws_infra.png" alt="AWS Cloud Infrastructure" width="3000" height="2250" />
@@ -267,25 +267,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="awards" id="awards">
-        <div className="awards-inner">
-          <div className="skills-subtitle awards-title">Récompenses</div>
-          <div className="awards-list" id="awards-list">
-            <div className="award-item" data-cursor-img="/assets/images/projects/Covers/Portfolio.avif">
-              <div className="award-org">GSAP</div>
-              <div className="award-site">brikesh.fr</div>
-              <div className="award-prize">Site of the week</div>
-              <div className="award-date">17 06 2026</div>
-            </div>
-            <div className="award-item" data-cursor-img="/assets/images/projects/Covers/Portfolio.avif">
-              <div className="award-org">Awwwards</div>
-              <div className="award-site">brikesh.fr</div>
-              <div className="award-prize">Nominee</div>
-              <div className="award-date">26 06 2026</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <div className="contact-bg" id="contact-bg"></div>
       <div className="contact-blob-wrap" id="contact-blob-wrap">

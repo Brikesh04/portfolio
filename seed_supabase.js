@@ -51,9 +51,9 @@ const INITIAL_PROJECTS = [
     },
     {
         "id": "sports-club",
-        "title": "Sports Club Platform",
-        "desc_en": "Full-stack web system with responsive frontend interfaces using React, HTML5, CSS3, and Tailwind CSS. Implemented REST API data synchronisation, authentication, and cloud deployment pipelines on Netlify.",
-        "desc_fr": "Système web full-stack avec interfaces responsive en React, HTML5, CSS3 et Tailwind. Intégration d'API REST pour la synchronisation, authentification, et déploiement Netlify.",
+        "title": "TuS Cricket Pfarrkirchen",
+        "desc_en": "Built and maintained responsive frontend web interfaces and authentication systems for TuS Cricket (TuS 1860 e.V. Pfarrkirchen) using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.",
+        "desc_fr": "Développement et maintenance d'un portail web responsive pour le club TuS Cricket (TuS 1860 e.V. Pfarrkirchen) avec React, HTML5, CSS3 et Tailwind. Intégration d'API REST et déploiement Netlify.",
         "category_en": "Web Application",
         "category_fr": "Application Web",
         "year": "2024",

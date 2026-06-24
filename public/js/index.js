@@ -2465,7 +2465,7 @@ function setupProjectsSection() {
                 images: ['food_delivery.png'],
             },
             'sports-club': {
-                desc: isEn ? 'Full-stack web system with responsive frontend interfaces using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.' : 'Système web full-stack avec interfaces responsive en React, HTML5, CSS3 et Tailwind. Intégration d\'API REST et déploiement Netlify.',
+                desc: isEn ? 'Built and maintained responsive frontend web interfaces and authentication systems for TuS Cricket (TuS 1860 e.V. Pfarrkirchen) using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.' : 'Développement et maintenance d\'un portail web responsive pour le club TuS Cricket (TuS 1860 e.V. Pfarrkirchen) avec React, HTML5, CSS3 et Tailwind. Intégration d\'API REST et déploiement Netlify.',
                 category: isEn ? 'Web Application' : 'Application Web',
                 year: '2024',
                 tags: ['React.js', 'Tailwind CSS', 'REST API', 'Netlify'],
