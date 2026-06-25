@@ -40,8 +40,8 @@
 
     const fLuke = document.querySelector('.footer-name-luke');
     const fVikin = document.querySelector('.footer-name-baffait');
-    if (fLuke) fLuke.innerHTML = '<span class="first-letter">' + settings.first_name[0] + '</span>' + settings.first_name.slice(1);
-    if (fVikin) fVikin.textContent = settings.last_name;
+    if (fLuke) fLuke.innerHTML = '<span class="first-letter">B</span>rikesh';
+    if (fVikin) fVikin.textContent = 'Vikin';
 
     let dbProjects = [];
     try {
@@ -1150,36 +1150,36 @@
         } else {
             PROJECTS = {
                 'food-delivery': {
-                    desc: isEn ? 'Built two React Native apps supporting 190+ menu items and 150+ daily orders in live production. Secure Node.js, Express, Prisma, and PostgreSQL backend.' : 'Développement de deux applications React Native (190+ articles, 150+ commandes/jour). Backend sécurisé Node.js, Express, Prisma, PostgreSQL.',
-                    category: isEn ? 'Mobile App' : 'App Mobile',
+                    desc: 'Built two React Native apps supporting 190+ menu items and 150+ daily orders in live production. Secure Node.js, Express, Prisma, and PostgreSQL backend.',
+                    category: 'Mobile App',
                     year: '2024',
                     tags: ['React Native', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Stripe', 'WebSockets'],
                     images: ['/food_delivery.png'],
                 },
                 'sports-club': {
-                    desc: isEn ? 'Built and maintained responsive frontend web interfaces and authentication systems for TuS Cricket (TuS 1860 e.V. Pfarrkirchen) using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.' : 'Développement et maintenance d\'un portail web responsive pour le club TuS Cricket (TuS 1860 e.V. Pfarrkirchen) avec React, HTML5, CSS3 et Tailwind. Intégration d\'API REST et déploiement Netlify.',
-                    category: isEn ? 'Web Application' : 'Application Web',
+                    desc: 'Built and maintained responsive frontend web interfaces and authentication systems for a local sports club using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.',
+                    category: 'Web Application',
                     year: '2024',
                     tags: ['React.js', 'Tailwind CSS', 'REST API', 'Netlify'],
                     images: ['/sports_club.png'],
                 },
                 'durr-cts': {
-                    desc: isEn ? 'Desktop solution for equipment diagnostics featuring a Python parser for tag extraction and a multi-user SQLite database with automatic conflict resolution.' : 'Solution de bureau pour le diagnostic d\'équipements, avec un parseur Python pour l\'extraction de données et une base SQLite multi-utilisateurs.',
-                    category: isEn ? 'Desktop Application' : 'Application Desktop',
+                    desc: 'Desktop solution for equipment diagnostics featuring a Python parser for tag extraction and a multi-user SQLite database with automatic conflict resolution.',
+                    category: 'Desktop Application',
                     year: '2024',
                     tags: ['Python', 'SQLite', 'SharePoint', 'OneDrive', 'Pytest'],
-                    images: ['/assets/images/projects/Covers/CyberDiag.avif'],
+                    images: ['/assets/images/projects/Covers/CyberDiag.png'],
                 },
                 'healthcare-nlp': {
-                    desc: isEn ? 'Python Flask backend application for healthcare symptom classification and RESTful APIs using NLP intent classification with 80% accuracy.' : 'Backend Python (Flask) pour la classification de symptômes médicaux par traitement automatique du langage naturel (NLP) avec 80% de précision.',
-                    category: isEn ? 'AI / Backend API' : 'IA / API Backend',
+                    desc: 'Python Flask backend application for healthcare symptom classification and RESTful APIs using NLP intent classification with 80% accuracy.',
+                    category: 'AI / Backend API',
                     year: '2023',
                     tags: ['Python', 'Flask', 'NLP', 'TF-IDF', 'N-grams'],
                     images: ['/healthcare_nlp.png'],
                 },
                 'aws-infra': {
-                    desc: isEn ? 'Provisioned and configured AWS EC2 instances, security groups, and network access rules for secure cloud lifecycle management.' : 'Provisionnement et configuration d\'instances AWS EC2, de groupes de sécurité et de règles réseau pour une gestion sécurisée du cycle de vie cloud.',
-                    category: isEn ? 'Cloud / DevOps' : 'Cloud / DevOps',
+                    desc: 'Provisioned and configured AWS EC2 instances, security groups, and network access rules for secure cloud lifecycle management.',
+                    category: 'Cloud / DevOps',
                     year: '2025',
                     tags: ['AWS', 'EC2', 'Security Groups', 'Infrastructure'],
                     images: ['/aws_infra.png'],

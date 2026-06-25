@@ -7,9 +7,9 @@ export default async function InfoPage() {
   const settings = await getSettings();
 
   const email = settings.email || 'brikeshvikin13@gmail.com';
-  const firstName = settings.first_name || 'Brikesh';
-  const lastName = settings.last_name || 'Vikin';
-  const photoUrl = settings.photo_url || '/assets/images/profile/me.avif';
+  const firstName = 'Brikesh';
+  const lastName = 'Vikin';
+  const photoUrl = settings.photo_url || '/assets/images/profile/me.jpg';
 
   return (
     <>

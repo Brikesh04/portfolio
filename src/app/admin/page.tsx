@@ -156,6 +156,9 @@ export default function AdminDashboard() {
     if (!settings) return;
     const updated = { ...settings };
     updated.translations[lang][key] = value;
+    if (lang === 'en') {
+      updated.translations['fr'][key] = value;
+    }
     setSettings(updated);
   };
 
@@ -193,12 +196,18 @@ export default function AdminDashboard() {
     const index = projects.findIndex(p => p.id === editingProject.id);
     let updatedList = [...projects];
 
+    const normalizedProj = {
+      ...editingProject,
+      desc_fr: editingProject.desc_en,
+      category_fr: editingProject.category_en
+    };
+
     if (index >= 0) {
       // Update existing project
-      updatedList[index] = editingProject;
+      updatedList[index] = normalizedProj;
     } else {
       // Add new project
-      updatedList.push(editingProject);
+      updatedList.push(normalizedProj);
     }
 
     saveAllProjects(updatedList);
@@ -358,23 +367,13 @@ export default function AdminDashboard() {
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs font-semibold text-rose-400">{key}</span>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <span className="text-[10px] uppercase text-neutral-500 tracking-wider">English</span>
                       <textarea 
                         rows={2}
                         className="bg-neutral-950 border border-neutral-850 rounded-lg px-3 py-2 text-xs focus:border-rose-500 outline-none font-sans"
                         value={settings.translations.en[key]}
                         onChange={(e) => handleTranslationChange('en', key, e.target.value)}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <span className="text-[10px] uppercase text-neutral-500 tracking-wider">French</span>
-                      <textarea 
-                        rows={2}
-                        className="bg-neutral-950 border border-neutral-850 rounded-lg px-3 py-2 text-xs focus:border-rose-500 outline-none font-sans"
-                        value={settings.translations.fr[key]}
-                        onChange={(e) => handleTranslationChange('fr', key, e.target.value)}
                       />
                     </div>
                   </div>
@@ -418,7 +417,7 @@ export default function AdminDashboard() {
                             <span>{proj.title}</span>
                           </td>
                           <td className="py-4 px-4 text-xs text-neutral-400">
-                            {proj.category_en} / {proj.category_fr}
+                            {proj.category_en}
                           </td>
                           <td className="py-4 px-4 text-xs font-mono text-neutral-400">{proj.year}</td>
                           <td className="py-4 px-4 text-xs text-neutral-400">
@@ -483,21 +482,11 @@ export default function AdminDashboard() {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs uppercase text-neutral-500 tracking-wider">Category (English)</label>
+                    <label className="text-xs uppercase text-neutral-500 tracking-wider">Category</label>
                     <input 
                       type="text" 
                       value={editingProject.category_en} 
                       onChange={(e) => setEditingProject({ ...editingProject, category_en: e.target.value })}
-                      className="bg-neutral-950 border border-neutral-850 rounded-lg px-4 py-3 text-sm focus:border-rose-500 outline-none" 
-                      required 
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs uppercase text-neutral-500 tracking-wider">Category (French)</label>
-                    <input 
-                      type="text" 
-                      value={editingProject.category_fr} 
-                      onChange={(e) => setEditingProject({ ...editingProject, category_fr: e.target.value })}
                       className="bg-neutral-950 border border-neutral-850 rounded-lg px-4 py-3 text-sm focus:border-rose-500 outline-none" 
                       required 
                     />
@@ -551,21 +540,11 @@ export default function AdminDashboard() {
                     />
                   </div>
                   <div className="flex flex-col gap-2 md:col-span-2">
-                    <label className="text-xs uppercase text-neutral-500 tracking-wider">Description (English)</label>
+                    <label className="text-xs uppercase text-neutral-500 tracking-wider">Description</label>
                     <textarea 
                       rows={3}
                       value={editingProject.desc_en} 
                       onChange={(e) => setEditingProject({ ...editingProject, desc_en: e.target.value })}
-                      className="bg-neutral-950 border border-neutral-850 rounded-lg px-4 py-3 text-sm focus:border-rose-500 outline-none" 
-                      required 
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2 md:col-span-2">
-                    <label className="text-xs uppercase text-neutral-500 tracking-wider">Description (French)</label>
-                    <textarea 
-                      rows={3}
-                      value={editingProject.desc_fr} 
-                      onChange={(e) => setEditingProject({ ...editingProject, desc_fr: e.target.value })}
                       className="bg-neutral-950 border border-neutral-850 rounded-lg px-4 py-3 text-sm focus:border-rose-500 outline-none" 
                       required 
                     />

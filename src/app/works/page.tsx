@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export default async function WorksPage() {
   return (
     <>
-      <link rel="stylesheet" href="/styles/works.css" />
+      <link rel="stylesheet" href={`/styles/works.css?v=${Date.now()}`} />
 
       <div className="intro-overlay" id="intro-overlay"></div>
       <div className="page-title" id="page-title">Work</div>
@@ -46,8 +46,8 @@ export default async function WorksPage() {
         </div>
       </div>
 
-      <Script src="/js/i18n.js" strategy="afterInteractive" />
-      <Script src="/js/works.js" strategy="afterInteractive" />
+      <Script src={`/js/i18n.js?v=${Date.now()}`} strategy="afterInteractive" />
+      <Script src={`/js/works.js?v=${Date.now()}`} strategy="afterInteractive" />
     </>
   );
 }

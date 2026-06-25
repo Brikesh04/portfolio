@@ -629,7 +629,7 @@ a.chr-hover {
     height: auto;
     display: block;
     object-fit: cover;
-    cursor: none;
+    cursor: pointer;
 }
 
 .proj-meta {
@@ -649,6 +649,7 @@ a.chr-hover {
 }
 
 .proj-cursor {
+    display: none;
     position: fixed;
     pointer-events: none;
     z-index: 30006;
@@ -696,6 +697,10 @@ a.chr-hover {
     width: clamp(120px, 14vw, 210px);
     aspect-ratio: 3/2;
     transform-style: preserve-3d;
+}
+
+img[src*="sports_club"] {
+    background-color: #ffffff !important;
 }
 
 .cg-slice {
@@ -1534,7 +1539,8 @@ a.chr-hover {
     z-index: 1;
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 4vw;
     width: 100%;
     padding: 0 1.5vw;
     white-space: nowrap;

@@ -9,12 +9,13 @@ export default async function HomePage() {
   const email = settings.email || 'brikeshvikin13@gmail.com';
   const linkedinUrl = settings.linkedin_url || 'https://www.linkedin.com/in/brikesh-vikin/';
   const githubUrl = settings.github_url || 'https://github.com/BrikeshG';
-  const firstName = settings.first_name || 'Brikesh';
-  const lastName = settings.last_name || 'Vikin';
+  const firstName = 'Brikesh';
+  const lastName = 'Vikin';
 
   return (
     <>
-      <script dangerouslySetInnerHTML={{ __html: `
+      <script dangerouslySetInnerHTML={{
+        __html: `
         window.addEventListener('error', function(e) {
           var div = document.createElement('div');
           div.style.position = 'fixed';
@@ -48,7 +49,7 @@ export default async function HomePage() {
           document.body.appendChild(div);
         });
       ` }} />
-      <link rel="stylesheet" href="/styles/index.css?v=5" />
+      <link rel="stylesheet" href={`/styles/index.css?v=${Date.now()}`} />
 
       <div className="intro-bg" id="intro-bg"></div>
 
@@ -86,8 +87,6 @@ export default async function HomePage() {
                 <span className="chr-hover" data-chr="🡺V3.0"></span>
               </div>
               <nav className="hero-bar-center" aria-label="Social links">
-                <a className="chr-hover" data-chr="Behance" href="https://www.behance.net/brikesh" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
-                <span className="sep" aria-hidden="true">/</span>
                 <a className="chr-hover" data-chr="LinkedIn" href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
                 <span className="sep" aria-hidden="true">/</span>
                 <a className="chr-hover" data-chr="GitHub" href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
@@ -131,11 +130,11 @@ export default async function HomePage() {
           </div>
           <div className="about-version">
             <svg style={{ width: '1.25em', height: '1.25em', verticalAlign: '-0.25em' }} viewBox="0 0 84 85" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 38H54L37 21H51L73 43L51 65H37L54 48H11Z"/>
+              <path d="M11 38H54L37 21H51L73 43L51 65H37L54 48H11Z" />
             </svg>V3.0
           </div>
           <div className="about-photo-wrap" id="about-photo-wrap">
-            <img className="about-photo" src="/assets/images/profile/me.avif" alt={`${firstName} ${lastName}`} decoding="async" width="2500" height="3001" />
+            <img className="about-photo" src="/assets/images/profile/me.jpg" alt={`${firstName} ${lastName}`} decoding="async" width="2500" height="3001" />
           </div>
         </div>
 
@@ -152,8 +151,8 @@ export default async function HomePage() {
           <div className="projects-inner">
             <div className="projects-list" id="projects-list">
               <div className="proj-item" data-id="food-delivery" data-img="/food_delivery.png" data-date="09 2024">Food Delivery Platform</div>
-              <div className="proj-item" data-id="sports-club" data-img="/sports_club.png" data-date="06 2024">TuS Cricket Pfarrkirchen</div>
-              <div className="proj-item" data-id="durr-cts" data-img="/assets/images/projects/Covers/CyberDiag.avif" data-date="11 2024">Inspection Data Manager</div>
+              <div className="proj-item" data-id="sports-club" data-img="/sports_club.png" data-date="06 2024">Sports Club Portal</div>
+              <div className="proj-item" data-id="durr-cts" data-img="/assets/images/projects/Covers/CyberDiag.png" data-date="11 2024">Inspection Data Manager</div>
               <div className="proj-item" data-id="healthcare-nlp" data-img="/healthcare_nlp.png" data-date="05 2023">Healthcare NLP Chatbot</div>
               <div className="proj-item" data-id="aws-infra" data-img="/aws_infra.png" data-date="11 2025">AWS Cloud Infrastructure</div>
             </div>
@@ -164,8 +163,8 @@ export default async function HomePage() {
       <section className="circle-gallery" id="circle-gallery">
         <div className="circle-gallery-pin" id="circle-gallery-pin">
           <img className="cg-img" src="/food_delivery.png" alt="Food Delivery Platform" width="3000" height="2250" />
-          <img className="cg-img" src="/sports_club.png" alt="TuS Cricket Pfarrkirchen" width="3000" height="2250" />
-          <img className="cg-img" src="/assets/images/projects/Covers/CyberDiag.avif" alt="Inspection Data Manager" width="1333" height="1000" />
+          <img className="cg-img" src="/sports_club.png" alt="Sports Club Portal" width="3000" height="2250" />
+          <img className="cg-img" src="/assets/images/projects/Covers/CyberDiag.png" alt="Inspection Data Manager" width="1333" height="1000" />
           <img className="cg-img" src="/healthcare_nlp.png" alt="Healthcare NLP Chatbot" width="3000" height="2250" />
           <img className="cg-img" src="/aws_infra.png" alt="AWS Cloud Infrastructure" width="3000" height="2250" />
           <p
@@ -181,7 +180,7 @@ export default async function HomePage() {
           <div className="skills-left">
             <div className="skills-subtitle">Skills</div>
             <div className="skills-text">
-              Computer Science student in Chennai, specialized in backend development, passionate about web development and design.
+              Software developer specialized in building scalable backend APIs, mobile apps, and interactive web experiences.
             </div>
             <div className="skills-separator"></div>
             <div>
@@ -189,7 +188,7 @@ export default async function HomePage() {
             </div>
             <div className="skills-arrow" id="skills-arrow">
               <svg style={{ width: '1.25em', height: '1.25em', verticalAlign: '-0.25em' }} viewBox="0 0 84 85" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11 38H54L37 21H51L73 43L51 65H37L54 48H11Z"/>
+                <path d="M11 38H54L37 21H51L73 43L51 65H37L54 48H11Z" />
               </svg>
             </div>
           </div>
@@ -343,7 +342,6 @@ export default async function HomePage() {
             <nav className="contact-socials" id="contact-socials" aria-label="Social links">
               <a className="chr-hover" data-chr-contact="GitHub" href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
               <a className="chr-hover" data-chr-contact="LinkedIn" href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
-              <a className="chr-hover" data-chr-contact="Behance" href="https://www.behance.net/brikesh" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
             </nav>
             <a className="contact-mail" id="contact-mail" href={`mailto:${email}`}>{email}</a>
           </div>
@@ -361,7 +359,6 @@ export default async function HomePage() {
             <nav className="footer-top-col" aria-label="Social links">
               <a className="chr-hover" data-chr-footer="GitHub" href={githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
               <a className="chr-hover" data-chr-footer="LinkedIn" href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
-              <a className="chr-hover" data-chr-footer="Behance" href="https://www.behance.net/brikesh" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
             </nav>
             <nav className="footer-top-col" aria-label="Footer navigation">
               <a className="chr-hover" data-chr-footer="Work" href="/works" data-page-link="work" aria-label="Work"></a>
@@ -383,7 +380,7 @@ export default async function HomePage() {
               {firstName.slice(1)}
             </span>
             <span className="footer-name-baffait-wrap">
-              <span className="footer-name-baffait">{lastName}</span>
+              <span className="footer-name-baffait">Vikin</span>
               <span className="footer-name-dot">.</span>
             </span>
           </div>
@@ -396,7 +393,7 @@ export default async function HomePage() {
             <span className="proj-date" id="proj-date">01 2025</span>
             <span className="proj-label">Preview</span>
           </div>
-          <img id="proj-cover" src="/assets/images/projects/Covers/CyberDiag.avif" alt="" width="1333" height="1000" />
+          <img id="proj-cover" src="/assets/images/projects/Covers/CyberDiag.png" alt="" width="1333" height="1000" />
         </div>
       </div>
       <div className="proj-cursor" id="proj-cursor">See project</div>
@@ -431,10 +428,10 @@ export default async function HomePage() {
       </div>
 
       {/* Page Specific Scripts */}
-      <Script src="/js/i18n.js?v=5" strategy="afterInteractive" />
-      <Script src="/js/core-renderer.js?v=5" strategy="afterInteractive" />
-      <Script src="/js/hero-project.js?v=5" strategy="afterInteractive" />
-      <Script src="/js/index.js?v=5" strategy="afterInteractive" />
+      <Script src={`/js/i18n.js?v=${Date.now()}`} strategy="afterInteractive" />
+      <Script src={`/js/core-renderer.js?v=${Date.now()}`} strategy="afterInteractive" />
+      <Script src={`/js/hero-project.js?v=${Date.now()}`} strategy="afterInteractive" />
+      <Script src={`/js/index.js?v=${Date.now()}`} strategy="afterInteractive" />
     </>
   );
 }

@@ -65,7 +65,6 @@ export default async function ContactPage() {
                 <li><a className="contact-link" href={`mailto:${email}`}>Direct email</a></li>
                 <li><a className="contact-link" href={linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 <li><a className="contact-link" href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a className="contact-link" href="https://www.behance.net/brikesh" target="_blank" rel="noopener noreferrer">Behance</a></li>
               </ul>
             </div>
             <div className="skill-col">

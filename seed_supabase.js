@@ -51,9 +51,9 @@ const INITIAL_PROJECTS = [
     },
     {
         "id": "sports-club",
-        "title": "TuS Cricket Pfarrkirchen",
-        "desc_en": "Built and maintained responsive frontend web interfaces and authentication systems for TuS Cricket (TuS 1860 e.V. Pfarrkirchen) using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.",
-        "desc_fr": "Développement et maintenance d'un portail web responsive pour le club TuS Cricket (TuS 1860 e.V. Pfarrkirchen) avec React, HTML5, CSS3 et Tailwind. Intégration d'API REST et déploiement Netlify.",
+        "title": "Sports Club Website",
+        "desc_en": "Built and maintained responsive frontend web interfaces and authentication systems for a local sports club using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.",
+        "desc_fr": "Développement et maintenance d'un portail web responsive pour un club de sport local avec React, HTML5, CSS3 et Tailwind. Intégration d'API REST et déploiement Netlify.",
         "category_en": "Web Application",
         "category_fr": "Application Web",
         "year": "2024",
@@ -244,6 +244,13 @@ const INITIAL_SETTINGS = {
 };
 
 async function seed() {
+  // Sync French fields to English to make the website English-only
+  INITIAL_SETTINGS.translations.fr = INITIAL_SETTINGS.translations.en;
+  INITIAL_PROJECTS.forEach(proj => {
+    proj.desc_fr = proj.desc_en;
+    proj.category_fr = proj.category_en;
+  });
+
   console.log('Seeding settings configuration...');
   const { data: settingsData, error: settingsError } = await supabase
     .from('settings')

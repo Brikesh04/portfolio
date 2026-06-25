@@ -1,10 +1,10 @@
-(async function() {
+(async function () {
     // Always English — standalone mode
     document.documentElement.lang = 'en';
     document.documentElement.dataset.lang = 'en';
     window.__I18N_LANG = 'en';
 
-    window.getCharHTML = function(ch) {
+    window.getCharHTML = function (ch) {
         if (ch === ' ') return '&nbsp;';
         if (ch === '🡲' || ch === '🡺') return '<svg style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;" viewBox="0 0 84 85" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11 38H54L37 21H51L73 43L51 65H37L54 48H11Z"/></svg>';
         if (ch === '🡼') return '<svg style="width: 1.25em; height: 1.25em; vertical-align: -0.25em;" viewBox="0 0 84 85" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="rotate(-135 42 42.5)"><path d="M11 38H54L37 21H51L73 43L51 65H37L54 48H11Z"/></g></svg>';
@@ -17,9 +17,9 @@
         first_name: "Brikesh",
         last_name: "Vikin",
         email: "brikeshvikin13@gmail.com",
-        linkedin_url: "https://www.linkedin.com/in/brikesh-vikin/",
-        github_url: "https://github.com/BrikeshG",
-        photo_url: "/assets/images/profile/me.avif",
+        linkedin_url: "https://www.linkedin.com/in/brikesh-vikin-gowrish/",
+        github_url: "https://github.com/Brikesh04",
+        photo_url: "/assets/images/profile/me.jpg",
         translations: {
             en: {
                 'meta.description': 'Creative developer specialized in web interfaces, animation and interactive design. Discover my projects and works.',
@@ -30,7 +30,7 @@
                 'index.about.sub': "My name is Brikesh. A passionate creator and Computer Science student in Chennai, I build memorable digital experiences, always seeking the symbiosis between art and information.",
                 'index.cg.phrase': 'Each project is a chance to <span class="other-accent">learn</span>, <span class="other-accent">experiment</span> and push my limits.',
                 'index.skills.subtitle': 'Skills',
-                'index.skills.text': 'Computer Science student in Chennai, specialized in backend development, passionate about web development and design.',
+                'index.skills.text': 'Software developer specialized in building scalable backend APIs, mobile apps, and interactive web experiences.',
                 'index.skills.frontend': 'Frontend',
                 'index.skills.animation': 'Backend',
                 'index.skills.backend': 'Databases',
@@ -116,13 +116,13 @@
     const T = settings.translations['en'];
 
     // Apply any remaining data-i18n attributes in the DOM
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
         const key = el.getAttribute('data-i18n');
         if (T[key] != null) el.innerHTML = T[key];
     });
 
-    document.querySelectorAll('[data-i18n-attr]').forEach(function(el) {
-        el.getAttribute('data-i18n-attr').split('|').forEach(function(pair) {
+    document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
+        el.getAttribute('data-i18n-attr').split('|').forEach(function (pair) {
             const idx = pair.indexOf(':');
             if (idx < 0) return;
             const attr = pair.slice(0, idx).trim();
@@ -137,7 +137,7 @@
     const descMeta = document.querySelector('meta[name="description"]');
     if (descMeta && T['meta.description']) descMeta.setAttribute('content', T['meta.description']);
 
-    window.__t = function(key) {
+    window.__t = function (key) {
         return T[key] || '';
     };
 
