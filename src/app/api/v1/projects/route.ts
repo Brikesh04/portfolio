@@ -7,24 +7,7 @@ import path from 'path';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  // Sync assets on host machine
-  try {
-    const src1 = '/Users/brikesh/.gemini/antigravity-ide/brain/6719ad0f-cd73-4553-82c3-59d8d7296443/media__1782404364560.png';
-    const src2 = '/Users/brikesh/.gemini/antigravity-ide/brain/6719ad0f-cd73-4553-82c3-59d8d7296443/media__1782404394437.png';
-    const dest1 = path.join(process.cwd(), 'public/tus_cricket_1.png');
-    const dest2 = path.join(process.cwd(), 'public/tus_cricket_2.png');
-    
-    if (fs.existsSync(src1)) {
-      fs.copyFileSync(src1, dest1);
-      console.log('✅ NextJS API: Copied screenshot 1 to public/tus_cricket_1.png');
-    }
-    if (fs.existsSync(src2)) {
-      fs.copyFileSync(src2, dest2);
-      console.log('✅ NextJS API: Copied screenshot 2 to public/tus_cricket_2.png');
-    }
-  } catch (err: any) {
-    console.error('❌ NextJS API: Failed to copy screenshots:', err.message);
-  }
+
 
   const projects = await getProjects();
   return NextResponse.json(projects);
