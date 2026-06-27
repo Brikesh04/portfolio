@@ -6,9 +6,7 @@ interface Project {
   id: string;
   title: string;
   desc_en: string;
-  desc_fr: string;
   category_en: string;
-  category_fr: string;
   year: string;
   tags: string[];
   img: string;
@@ -25,7 +23,6 @@ interface Settings {
   photo_url: string;
   translations: {
     en: Record<string, string>;
-    fr: Record<string, string>;
   };
 }
 
@@ -152,13 +149,10 @@ export default function AdminDashboard() {
     saveAllSettings(updated);
   };
 
-  const handleTranslationChange = (lang: 'en' | 'fr', key: string, value: string) => {
+  const handleTranslationChange = (key: string, value: string) => {
     if (!settings) return;
     const updated = { ...settings };
-    updated.translations[lang][key] = value;
-    if (lang === 'en') {
-      updated.translations['fr'][key] = value;
-    }
+    updated.translations.en[key] = value;
     setSettings(updated);
   };
 
@@ -172,9 +166,7 @@ export default function AdminDashboard() {
       id: '',
       title: '',
       desc_en: '',
-      desc_fr: '',
       category_en: '',
-      category_fr: '',
       year: new Date().getFullYear().toString(),
       tags: [],
       img: '',
@@ -196,18 +188,12 @@ export default function AdminDashboard() {
     const index = projects.findIndex(p => p.id === editingProject.id);
     let updatedList = [...projects];
 
-    const normalizedProj = {
-      ...editingProject,
-      desc_fr: editingProject.desc_en,
-      category_fr: editingProject.category_en
-    };
-
     if (index >= 0) {
       // Update existing project
-      updatedList[index] = normalizedProj;
+      updatedList[index] = editingProject;
     } else {
       // Add new project
-      updatedList.push(normalizedProj);
+      updatedList.push(editingProject);
     }
 
     saveAllProjects(updatedList);
@@ -373,7 +359,7 @@ export default function AdminDashboard() {
                         rows={2}
                         className="bg-neutral-950 border border-neutral-850 rounded-lg px-3 py-2 text-xs focus:border-rose-500 outline-none font-sans"
                         value={settings.translations.en[key]}
-                        onChange={(e) => handleTranslationChange('en', key, e.target.value)}
+                        onChange={(e) => handleTranslationChange(key, e.target.value)}
                       />
                     </div>
                   </div>

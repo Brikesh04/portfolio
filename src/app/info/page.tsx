@@ -37,7 +37,7 @@ export default async function InfoPage() {
           </div>
           <div className="info-meta">
             <span className="info-meta-label">Based in</span>
-            <span className="info-meta-value">Chennai, India</span>
+            <span className="info-meta-value">Passau, Germany</span>
           </div>
           <div className="info-meta">
             <span className="info-meta-label">Status</span>
@@ -49,7 +49,7 @@ export default async function InfoPage() {
           <div className="info-headline">
             <span className="info-eyebrow">About</span>
             <h1 className="info-name">{firstName} {lastName}.</h1>
-            <p className="info-role">Creative developer &amp; Computer Science student, specialized in web development.</p>
+            <p className="info-role">Creative developer &amp; Full-Stack Developer, specialized in web development.</p>
           </div>
 
           <p

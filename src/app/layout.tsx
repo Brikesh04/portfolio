@@ -3,7 +3,7 @@ import Script from 'next/script';
 
 export const metadata = {
   title: 'Brikesh Vikin — Creative Developer',
-  description: 'Creative developer specialized in web interfaces, animation and interactive design. Based in Chennai, India.',
+  description: 'Creative developer specialized in web interfaces, animation and interactive design. Based in Passau, Germany.',
 };
 
 export default function RootLayout({

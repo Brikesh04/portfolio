@@ -901,6 +901,29 @@ img[src*="sports_club"] {
     border-radius: 50px;
 }
 
+.detail-link-wrap {
+    margin-top: 2.5rem;
+    opacity: 0;
+    display: none;
+}
+
+.detail-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.8rem 1.6rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.3s ease, border-color 0.3s ease;
+    text-decoration: none;
+}
+
+.detail-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
 .detail-gallery-wrap {
     position: absolute;
     top: 0;

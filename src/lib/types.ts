@@ -11,7 +11,6 @@ export interface Settings {
   photo_url: string;
   translations: {
     en: TranslationDict;
-    fr: TranslationDict;
     [key: string]: TranslationDict;
   };
 }
@@ -20,9 +19,7 @@ export interface Project {
   id: string;
   title: string;
   desc_en: string;
-  desc_fr: string;
   category_en: string;
-  category_fr: string;
   year: string;
   tags: string[];
   img: string;

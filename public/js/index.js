@@ -1157,11 +1157,11 @@
                     images: ['/food_delivery.png'],
                 },
                 'sports-club': {
-                    desc: 'Built and maintained responsive frontend web interfaces and authentication systems for a local sports club using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.',
+                    desc: 'Built and maintained the official website for the TuS 1860 Pfarrkirchen cricket department using React, HTML5, CSS3, and Tailwind CSS. Features live squad rankings and a fully responsive layout with Netlify deployment. [live_link:https://tus-cricket-pfarrkirchen.de/]',
                     category: 'Web Application',
                     year: '2024',
                     tags: ['React.js', 'Tailwind CSS', 'REST API', 'Netlify'],
-                    images: ['/sports_club.png'],
+                    images: ['/tus_cricket_1.png', '/tus_cricket_2.png'],
                 },
                 'durr-cts': {
                     desc: 'Desktop solution for equipment diagnostics featuring a Python parser for tag extraction and a multi-user SQLite database with automatic conflict resolution.',
@@ -2615,7 +2615,27 @@
 
             detailTitle.textContent = clickedItem.textContent;
             detailYear.textContent = proj.year;
-            detailDesc.textContent = proj.desc;
+
+            var descText = proj.desc || '';
+            var liveLink = '';
+            var match = descText.match(/\[live_link:(.*?)\]/);
+            if (match) {
+                liveLink = match[1];
+                descText = descText.replace(/\[live_link:(.*?)\]/, '').trim();
+            }
+            detailDesc.textContent = descText;
+
+            // Handle link button visibility and href
+            const linkWrap = document.getElementById('detail-link-wrap');
+            const linkEl = document.getElementById('detail-link');
+            if (liveLink && linkWrap && linkEl) {
+                linkEl.href = liveLink;
+                linkWrap.style.display = 'inline-flex';
+                gsap.set(linkWrap, { opacity: 0, y: 10 });
+            } else if (linkWrap) {
+                linkWrap.style.display = 'none';
+            }
+
             detailTags.innerHTML = proj.tags.map(function (t) {
                 return '<span class="detail-tag">' + t + '</span>';
             }).join('');
@@ -2699,6 +2719,14 @@
                 duration: 0.5,
                 ease: 'power2.out'
             }, 1.3);
+            if (liveLink && linkWrap) {
+                tl.to(linkWrap, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                }, 1.35);
+            }
             tl.to(detailBack, {
                 opacity: 1,
                 duration: 0.5,
@@ -2744,7 +2772,11 @@
             var tl = gsap.timeline();
 
 
-            tl.to([detailDesc, detailTags, detailBack], {
+            var fadeElements = [detailDesc, detailTags, detailBack];
+            const linkWrap = document.getElementById('detail-link-wrap');
+            if (linkWrap) fadeElements.push(linkWrap);
+
+            tl.to(fadeElements, {
                 opacity: 0,
                 duration: 0.3,
                 ease: 'power2.in'

@@ -7,8 +7,8 @@ export default async function ContactPage() {
   const settings = await getSettings();
 
   const email = settings.email || 'brikeshvikin13@gmail.com';
-  const linkedinUrl = settings.linkedin_url || 'https://www.linkedin.com/in/brikesh-vikin/';
-  const githubUrl = settings.github_url || 'https://github.com/BrikeshG';
+  const linkedinUrl = settings.linkedin_url || 'https://www.linkedin.com/in/brikesh-vikin-gowrish/';
+  const githubUrl = settings.github_url || 'https://github.com/Brikesh04';
 
   return (
     <>
@@ -35,11 +35,11 @@ export default async function ContactPage() {
           </div>
           <div className="info-meta">
             <span className="info-meta-label">Based in</span>
-            <span className="info-meta-value">Chennai, India</span>
+            <span className="info-meta-value">Passau, Germany</span>
           </div>
           <div className="info-meta">
             <span className="info-meta-label">Status</span>
-            <span className="info-meta-value">Student / Freelance</span>
+            <span className="info-meta-value">Full-Stack Developer / Freelance</span>
           </div>
           <div className="info-meta">
             <span className="info-meta-label">Avg. response</span>

@@ -7,8 +7,8 @@ export default async function HomePage() {
   const settings = await getSettings();
 
   const email = settings.email || 'brikeshvikin13@gmail.com';
-  const linkedinUrl = settings.linkedin_url || 'https://www.linkedin.com/in/brikesh-vikin/';
-  const githubUrl = settings.github_url || 'https://github.com/BrikeshG';
+  const linkedinUrl = settings.linkedin_url || 'https://www.linkedin.com/in/brikesh-vikin-gowrish/';
+  const githubUrl = settings.github_url || 'https://github.com/Brikesh04';
   const firstName = 'Brikesh';
   const lastName = 'Vikin';
 
@@ -70,7 +70,7 @@ export default async function HomePage() {
       <div className="scroll-wrap" id="scroll-wrap">
         <section className="hero" id="hero">
           <h1 className="sr-only">
-            {firstName} {lastName} — Creative Developer, Computer Science student in Chennai, specialized in web development, animation and interactive design.
+            {firstName} {lastName} — Creative Developer, Full-Stack Developer based in Passau, Germany, specialized in web development, animation and interactive design.
           </h1>
           <div className="hero-canvas" id="hero-canvas"></div>
 
@@ -123,7 +123,7 @@ export default async function HomePage() {
           <div
             className="about-sub"
             id="about-sub"
-            dangerouslySetInnerHTML={{ __html: `My name is ${firstName}. A passionate creator and Computer Science student in Chennai, I build memorable digital experiences, always seeking the symbiosis between art and information.` }}
+            dangerouslySetInnerHTML={{ __html: `My name is ${firstName}. A passionate creator and Full-Stack Developer based in Passau, Germany, I build memorable digital experiences, always seeking the symbiosis between art and information.` }}
           />
           <div className="about-btn">
             <a className="chr-hover" data-chr="Info" href="/info" data-page-link="info" aria-label="Learn more about me"></a>
@@ -312,7 +312,7 @@ export default async function HomePage() {
 
           <div className="contact-dispo" id="contact-dispo">
             <p
-              dangerouslySetInnerHTML={{ __html: 'Looking for an <span class="other-accent">internship</span> starting September. Eager to join an innovative team and contribute to ambitious projects.' }}
+              dangerouslySetInnerHTML={{ __html: 'Available for freelance projects worldwide. Fast delivery, clear communication, and code that holds up in production.' }}
             />
           </div>
 
@@ -326,7 +326,7 @@ export default async function HomePage() {
 
           <div className="contact-dispo" id="contact-dispo-2">
             <p
-              dangerouslySetInnerHTML={{ __html: 'Available for <span class="other-accent">freelance missions worldwide</span>, on <span class="other-accent">your ambitious projects</span> and international collaborations.' }}
+              dangerouslySetInnerHTML={{ __html: 'Open to freelance and remote contracts — React, Node.js, React Native, and full-stack web.' }}
             />
           </div>
 
@@ -412,6 +412,9 @@ export default async function HomePage() {
           </div>
           <p className="detail-desc" id="detail-desc"></p>
           <div className="detail-tags" id="detail-tags"></div>
+          <div className="detail-link-wrap" id="detail-link-wrap" style={{ marginTop: '2.5rem', opacity: 0, display: 'none' }}>
+            <a id="detail-link" className="detail-link chr-hover" target="_blank" rel="noopener noreferrer" data-chr="Visit Website"></a>
+          </div>
         </div>
         <div className="detail-gallery-wrap" id="detail-gallery-wrap">
           <div className="detail-thumbs" id="detail-thumbs">

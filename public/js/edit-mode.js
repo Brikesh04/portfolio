@@ -89,19 +89,13 @@
   const toolbar = document.createElement('div');
   toolbar.className = 'edit-mode-toolbar';
   
-  const currentLang = window.__I18N_LANG || 'en';
+
 
   toolbar.innerHTML = `
     <h3>✏️ Visual Edit Mode</h3>
     <p>All translation blocks are outlined. Click any block directly to type and edit. Use the controls below to edit general details and save.</p>
     
-    <div>
-      <div class="edit-mode-field-label">Editing Language</div>
-      <select id="edit-lang-selector">
-        <option value="en" ${currentLang === 'en' ? 'selected' : ''}>English (EN)</option>
-        <option value="fr" ${currentLang === 'fr' ? 'selected' : ''}>French (FR)</option>
-      </select>
-    </div>
+
 
     <div>
       <div class="edit-mode-field-label">Contact Email</div>
@@ -123,13 +117,7 @@
 
   document.body.appendChild(toolbar);
 
-  // Handle switching language
-  document.getElementById('edit-lang-selector').addEventListener('change', function(e) {
-    const selectedLang = e.target.value;
-    const url = new URL(window.location.href);
-    // Simulate switching language if needed, or redirect
-    alert("Switching language to " + selectedLang.toUpperCase() + ". Make sure you've saved current changes first.");
-  });
+
 
   // Handle Save
   document.getElementById('edit-save-btn').addEventListener('click', async function() {
@@ -143,7 +131,7 @@
       const github_url = document.getElementById('edit-github-field').value.trim();
 
       // Scrape translations from page
-      const currentLangMap = window.__SETTINGS.translations[currentLang] || {};
+      const currentLangMap = window.__SETTINGS.translations['en'] || {};
 
       document.querySelectorAll('[data-edit-key]').forEach(el => {
         const key = el.getAttribute('data-edit-key');
@@ -155,7 +143,7 @@
       window.__SETTINGS.email = email;
       window.__SETTINGS.linkedin_url = linkedin_url;
       window.__SETTINGS.github_url = github_url;
-      window.__SETTINGS.translations[currentLang] = currentLangMap;
+      window.__SETTINGS.translations['en'] = currentLangMap;
 
       // POST to Express API
       const res = await fetch('/api/v1/settings', {

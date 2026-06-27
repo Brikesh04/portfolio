@@ -65,12 +65,12 @@
       },
       {
         id: 'sports-club',
-        title: 'Sports Club Website',
-        desc: 'Built and maintained responsive frontend web interfaces and authentication systems for a local sports club using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.',
+        title: 'TuS Cricket Pfarrkirchen',
+        desc: 'Built and maintained the official website for the TuS 1860 Pfarrkirchen cricket department using React, HTML5, CSS3, and Tailwind CSS. Features live squad rankings and a fully responsive layout with Netlify deployment. [live_link:https://tus-cricket-pfarrkirchen.de/]',
         category: 'Web Application',
         year: '2024',
         tags: ['React.js', 'Tailwind CSS', 'REST API', 'Netlify'],
-        cover: '/sports_club.png'
+        cover: '/tus_cricket_1.png'
       },
       {
         id: 'durr-cts',
@@ -143,6 +143,20 @@
     faceOwner[fIdx] = pIdx;
     var proj = PROJECTS[pIdx];
     var isLeft = pIdx % 2 === 0;
+
+    var descText = proj.desc || '';
+    var liveLink = '';
+    var match = descText.match(/\[live_link:(.*?)\]/);
+    if (match) {
+      liveLink = match[1];
+      descText = descText.replace(/\[live_link:(.*?)\]/, '').trim();
+    }
+
+    var liveLinkHTML = '';
+    if (liveLink) {
+      liveLinkHTML = '<div class="face-link-wrap"><a href="' + liveLink + '" target="_blank" rel="noopener noreferrer" class="face-link">Visit Website 🡽</a></div>';
+    }
+
     faces[fIdx].innerHTML =
       '<div class="face-content ' + (isLeft ? 'layout-left' : 'layout-right') + '">' +
       '<div class="face-cover">' +
@@ -154,8 +168,9 @@
       '<div class="face-info-content">' +
       '<div class="face-category">' + proj.category + '</div>' +
       '<div class="face-year">' + proj.year + '</div>' +
-      '<div class="face-desc">' + proj.desc + '</div>' +
+      '<div class="face-desc">' + descText + '</div>' +
       '<div class="face-tags">' + proj.tags.map(function (t) { return '<span class="face-tag">' + t + '</span>'; }).join('') + '</div>' +
+      liveLinkHTML +
       '</div>' +
       '</div>' +
       '</div>';

@@ -9,47 +9,24 @@ export const dynamic = 'force-dynamic';
 export async function GET() {
   // Sync assets on host machine
   try {
-    const srcPhoto = '/Users/brikesh/anti gravity/TuS_website/public/pfarrkirchen-skyline.png';
-    const destPhoto = path.join(process.cwd(), 'public/sports_club.png');
-    if (fs.existsSync(srcPhoto)) {
-      fs.copyFileSync(srcPhoto, destPhoto);
-      console.log('✅ NextJS API: Copied hero-bg.jpg to public/sports_club.png');
+    const src1 = '/Users/brikesh/.gemini/antigravity-ide/brain/6719ad0f-cd73-4553-82c3-59d8d7296443/media__1782404364560.png';
+    const src2 = '/Users/brikesh/.gemini/antigravity-ide/brain/6719ad0f-cd73-4553-82c3-59d8d7296443/media__1782404394437.png';
+    const dest1 = path.join(process.cwd(), 'public/tus_cricket_1.png');
+    const dest2 = path.join(process.cwd(), 'public/tus_cricket_2.png');
+    
+    if (fs.existsSync(src1)) {
+      fs.copyFileSync(src1, dest1);
+      console.log('✅ NextJS API: Copied screenshot 1 to public/tus_cricket_1.png');
+    }
+    if (fs.existsSync(src2)) {
+      fs.copyFileSync(src2, dest2);
+      console.log('✅ NextJS API: Copied screenshot 2 to public/tus_cricket_2.png');
     }
   } catch (err: any) {
-    console.error('❌ NextJS API: Failed to copy sports photo:', err.message);
+    console.error('❌ NextJS API: Failed to copy screenshots:', err.message);
   }
 
   const projects = await getProjects();
-
-  try {
-    let changed = false;
-    projects.forEach(proj => {
-      // Ensure sports-club project is generalized
-      if (proj.id === 'sports-club' && proj.title !== 'Sports Club Website') {
-        proj.title = 'Sports Club Website';
-        proj.desc_en = 'Built and maintained responsive frontend web interfaces and authentication systems for a local sports club using React, HTML5, CSS3, and Tailwind CSS. REST API integration and Netlify deployment.';
-        changed = true;
-      }
-      
-      // Sync French columns to English to make them English-only
-      if (proj.desc_fr !== proj.desc_en) {
-        proj.desc_fr = proj.desc_en;
-        changed = true;
-      }
-      if (proj.category_fr !== proj.category_en) {
-        proj.category_fr = proj.category_en;
-        changed = true;
-      }
-    });
-
-    if (changed) {
-      await saveProjects(projects);
-      console.log('✅ NextJS API: Successfully synced project database columns to English-only!');
-    }
-  } catch (err: any) {
-    console.error('❌ NextJS API: Failed to sync database projects:', err.message);
-  }
-
   return NextResponse.json(projects);
 }
 
