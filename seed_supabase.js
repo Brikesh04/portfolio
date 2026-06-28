@@ -38,58 +38,47 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 const INITIAL_PROJECTS = [
   {
     "id": "food-delivery",
-    "title": "Food Delivery Platform",
+    "title": "Food Delivery App",
     "desc_en": "Built two React Native apps supporting 190+ menu items and 150+ daily orders in live production. Secure Node.js, Express, Prisma, and PostgreSQL backend with JWT authentication, Stripe payments, and real-time WebSockets tracking.",
     "category_en": "Mobile App",
     "year": "2024",
     "tags": ["React Native", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Stripe", "WebSockets"],
-    "img": "/food_delivery.png",
+    "img": "/food_delivery_1.png",
     "date": "09 2024",
-    "images": ["/food_delivery.png"]
+    "images": ["/food_delivery_1.png", "/food_delivery_2.png", "/food_delivery_3.png"]
   },
   {
     "id": "sports-club",
-    "title": "TuS Cricket Pfarrkirchen",
+    "title": "sports club page",
     "desc_en": "Built and maintained the official website for the TuS 1860 Pfarrkirchen cricket department using React, HTML5, CSS3, and Tailwind CSS. Features live squad rankings and a fully responsive layout with Netlify deployment. [live_link:https://tus-cricket-pfarrkirchen.de/]",
     "category_en": "Web Application",
     "year": "2024",
     "tags": ["React.js", "Tailwind CSS", "REST API", "Netlify"],
     "img": "/tus_cricket_1.png",
     "date": "06 2024",
-    "images": ["/tus_cricket_1.png", "/tus_cricket_2.png"]
+    "images": ["/tus_cricket_1.png", "/tus_cricket_2.png", "/tus_cricket_3.png"]
   },
   {
     "id": "durr-cts",
-    "title": "Inspection Data Manager",
+    "title": "Data Manager",
     "desc_en": "Desktop solution designed and delivered during a hackathon (now officially certified). Built a smart Python parser to extract equipment tags, checklist results, and comments, synced over SharePoint/OneDrive with a multi-user SQLite database and automatic conflict resolution.",
     "category_en": "Desktop Application",
     "year": "2024",
     "tags": ["Python", "SQLite", "SharePoint", "OneDrive", "Pytest"],
-    "img": "/assets/images/projects/Covers/CyberDiag.avif",
+    "img": "/durr_cts_1.png",
     "date": "11 2024",
-    "images": ["/assets/images/projects/Covers/CyberDiag.avif"]
+    "images": ["/durr_cts_1.png", "/durr_cts_2.png"]
   },
   {
     "id": "healthcare-nlp",
-    "title": "Healthcare NLP Chatbot",
+    "title": "Health Assistant bot",
     "desc_en": "Python (Flask) backend application for healthcare symptom classification and RESTful APIs to process user queries. Implemented NLP techniques including TF-IDF and N-grams for intent classification, achieving 80% accuracy in clinical classification.",
     "category_en": "AI / Backend API",
     "year": "2023",
     "tags": ["Python", "Flask", "NLP", "TF-IDF", "N-grams"],
-    "img": "/healthcare_nlp.png",
+    "img": "/healthcare_nlp_1.png",
     "date": "05 2023",
-    "images": ["/healthcare_nlp.png"]
-  },
-  {
-    "id": "aws-infra",
-    "title": "AWS Cloud Infrastructure",
-    "desc_en": "Provisioned and configured AWS EC2 instances, security groups, and inbound/outbound network access for secure cloud lifecycle management.",
-    "category_en": "Cloud / DevOps",
-    "year": "2025",
-    "tags": ["AWS", "EC2", "Security Groups", "Infrastructure"],
-    "img": "/aws_infra.png",
-    "date": "11 2025",
-    "images": ["/aws_infra.png"]
+    "images": ["/healthcare_nlp_1.png", "/healthcare_nlp_2.png"]
   }
 ];
 
@@ -181,10 +170,27 @@ async function seed() {
     console.log('✅ Settings table successfully seeded!');
   }
 
+  const projectsToSeed = INITIAL_PROJECTS.map(proj => ({
+    ...proj,
+    desc_fr: '',
+    category_fr: ''
+  }));
+
+  const activeIds = projectsToSeed.map(p => p.id);
+  console.log('Cleaning up obsolete projects from database...');
+  const { error: deleteError } = await supabase
+    .from('projects')
+    .delete()
+    .not('id', 'in', `(${activeIds.join(',')})`);
+
+  if (deleteError) {
+    console.error('⚠️ Database cleanup warning:', deleteError.message);
+  }
+
   console.log('Seeding projects list...');
   const { data: projectsData, error: projectsError } = await supabase
     .from('projects')
-    .upsert(INITIAL_PROJECTS);
+    .upsert(projectsToSeed);
 
   if (projectsError) {
     console.error('❌ Projects seeding failed:', projectsError.message);

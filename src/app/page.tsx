@@ -150,11 +150,11 @@ export default async function HomePage() {
           </svg>
           <div className="projects-inner">
             <div className="projects-list" id="projects-list">
-              <div className="proj-item" data-id="food-delivery" data-img="/food_delivery.png" data-date="09 2024">Food Delivery Platform</div>
-              <div className="proj-item" data-id="sports-club" data-img="/sports_club.png" data-date="06 2024">Sports Club Portal</div>
-              <div className="proj-item" data-id="durr-cts" data-img="/assets/images/projects/Covers/CyberDiag.png" data-date="11 2024">Inspection Data Manager</div>
-              <div className="proj-item" data-id="healthcare-nlp" data-img="/healthcare_nlp.png" data-date="05 2023">Healthcare NLP Chatbot</div>
-              <div className="proj-item" data-id="aws-infra" data-img="/aws_infra.png" data-date="11 2025">AWS Cloud Infrastructure</div>
+              <div className="proj-item" data-id="food-delivery" data-img="/food_delivery_1.png" data-date="09 2024">Food Delivery App</div>
+              <div className="proj-item" data-id="sports-club" data-img="/tus_cricket_1.png" data-date="06 2024">sports club page</div>
+              <div className="proj-item" data-id="durr-cts" data-img="/durr_cts_1.png" data-date="11 2024">Data Manager</div>
+              <div className="proj-item" data-id="healthcare-nlp" data-img="/healthcare_nlp_1.png" data-date="05 2023">Health Assistant bot</div>
+
             </div>
           </div>
         </div>
@@ -162,11 +162,11 @@ export default async function HomePage() {
 
       <section className="circle-gallery" id="circle-gallery">
         <div className="circle-gallery-pin" id="circle-gallery-pin">
-          <img className="cg-img" src="/food_delivery.png" alt="Food Delivery Platform" width="3000" height="2250" />
-          <img className="cg-img" src="/sports_club.png" alt="Sports Club Portal" width="3000" height="2250" />
-          <img className="cg-img" src="/assets/images/projects/Covers/CyberDiag.png" alt="Inspection Data Manager" width="1333" height="1000" />
-          <img className="cg-img" src="/healthcare_nlp.png" alt="Healthcare NLP Chatbot" width="3000" height="2250" />
-          <img className="cg-img" src="/aws_infra.png" alt="AWS Cloud Infrastructure" width="3000" height="2250" />
+          <img className="cg-img" src="/food_delivery_1.png" alt="Food Delivery App" width="3000" height="2250" />
+          <img className="cg-img" src="/tus_cricket_1.png" alt="sports club page" width="3000" height="2250" />
+          <img className="cg-img" src="/durr_cts_1.png" alt="Data Manager" width="1333" height="1000" />
+          <img className="cg-img" src="/healthcare_nlp_1.png" alt="Health Assistant bot" width="3000" height="2250" />
+
           <p
             className="cg-phrase"
             id="cg-phrase"
@@ -393,7 +393,7 @@ export default async function HomePage() {
             <span className="proj-date" id="proj-date">01 2025</span>
             <span className="proj-label">Preview</span>
           </div>
-          <img id="proj-cover" src="/assets/images/projects/Covers/CyberDiag.png" alt="" width="1333" height="1000" />
+          <img id="proj-cover" src="/durr_cts_1.png" alt="" width="1333" height="1000" />
         </div>
       </div>
       <div className="proj-cursor" id="proj-cursor">See project</div>

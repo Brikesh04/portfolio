@@ -56,16 +56,16 @@
     PROJECTS = [
       {
         id: 'food-delivery',
-        title: 'Food Delivery Platform',
+        title: 'Food Delivery App',
         desc: 'Built two React Native apps supporting 190+ menu items and 150+ daily orders in live production. Secure Node.js, Express, Prisma, and PostgreSQL backend.',
         category: 'Mobile App',
         year: '2024',
         tags: ['React Native', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Stripe', 'WebSockets'],
-        cover: '/food_delivery.png'
+        cover: '/food_delivery_1.png'
       },
       {
         id: 'sports-club',
-        title: 'TuS Cricket Pfarrkirchen',
+        title: 'sports club page',
         desc: 'Built and maintained the official website for the TuS 1860 Pfarrkirchen cricket department using React, HTML5, CSS3, and Tailwind CSS. Features live squad rankings and a fully responsive layout with Netlify deployment. [live_link:https://tus-cricket-pfarrkirchen.de/]',
         category: 'Web Application',
         year: '2024',
@@ -74,30 +74,21 @@
       },
       {
         id: 'durr-cts',
-        title: 'Inspection Data Manager',
+        title: 'Data Manager',
         desc: 'Desktop solution for equipment diagnostics featuring a Python parser for tag extraction and a multi-user SQLite database with automatic conflict resolution.',
         category: 'Desktop Application',
         year: '2024',
         tags: ['Python', 'SQLite', 'SharePoint', 'OneDrive', 'Pytest'],
-        cover: '/assets/images/projects/Covers/CyberDiag.png'
+        cover: '/durr_cts_1.png'
       },
       {
         id: 'healthcare-nlp',
-        title: 'Healthcare NLP Chatbot',
+        title: 'Health Assistant bot',
         desc: 'Python Flask backend application for healthcare symptom classification and RESTful APIs using NLP intent classification with 80% accuracy.',
         category: 'AI / Backend API',
         year: '2023',
         tags: ['Python', 'Flask', 'NLP', 'TF-IDF', 'N-grams'],
-        cover: '/healthcare_nlp.png'
-      },
-      {
-        id: 'aws-infra',
-        title: 'AWS Cloud Infrastructure',
-        desc: 'Provisioned and configured AWS EC2 instances, security groups, and network access rules for secure cloud lifecycle management.',
-        category: 'Cloud / DevOps',
-        year: '2025',
-        tags: ['AWS', 'EC2', 'Security Groups', 'Infrastructure'],
-        cover: '/aws_infra.png'
+        cover: '/healthcare_nlp_1.png'
       }
     ];
   }

@@ -399,7 +399,7 @@ export default function AdminDashboard() {
                       {projects.map((proj) => (
                         <tr key={proj.id} className="border-b border-neutral-900 hover:bg-neutral-950/40 transition-colors">
                           <td className="py-4 px-4 font-bold text-rose-100 flex items-center gap-3">
-                            <img src={proj.img} className="w-12 h-8 rounded border border-neutral-800 object-cover" onError={(e) => { (e.target as HTMLImageElement).src = '/assets/images/projects/Covers/CyberDiag.avif' }} />
+                            <img src={proj.img} className="w-12 h-8 rounded border border-neutral-800 object-cover" onError={(e) => { (e.target as HTMLImageElement).src = '/durr_cts_1.png' }} />
                             <span>{proj.title}</span>
                           </td>
                           <td className="py-4 px-4 text-xs text-neutral-400">

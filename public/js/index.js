@@ -45,7 +45,7 @@
 
     let dbProjects = [];
     try {
-        const response = await fetch('/api/v1/projects');
+        const response = await fetch('/api/v1/projects?t=' + Date.now());
         if (response.ok) {
             dbProjects = await response.json();
         }
@@ -1154,35 +1154,28 @@
                     category: 'Mobile App',
                     year: '2024',
                     tags: ['React Native', 'TypeScript', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'Stripe', 'WebSockets'],
-                    images: ['/food_delivery.png'],
+                    images: ['/food_delivery_1.png', '/food_delivery_2.png', '/food_delivery_3.png'],
                 },
                 'sports-club': {
                     desc: 'Built and maintained the official website for the TuS 1860 Pfarrkirchen cricket department using React, HTML5, CSS3, and Tailwind CSS. Features live squad rankings and a fully responsive layout with Netlify deployment. [live_link:https://tus-cricket-pfarrkirchen.de/]',
                     category: 'Web Application',
                     year: '2024',
                     tags: ['React.js', 'Tailwind CSS', 'REST API', 'Netlify'],
-                    images: ['/tus_cricket_1.png', '/tus_cricket_2.png'],
+                    images: ['/tus_cricket_1.png', '/tus_cricket_2.png', '/tus_cricket_3.png'],
                 },
                 'durr-cts': {
                     desc: 'Desktop solution for equipment diagnostics featuring a Python parser for tag extraction and a multi-user SQLite database with automatic conflict resolution.',
                     category: 'Desktop Application',
                     year: '2024',
                     tags: ['Python', 'SQLite', 'SharePoint', 'OneDrive', 'Pytest'],
-                    images: ['/assets/images/projects/Covers/CyberDiag.png'],
+                    images: ['/durr_cts_1.png', '/durr_cts_2.png'],
                 },
                 'healthcare-nlp': {
                     desc: 'Python Flask backend application for healthcare symptom classification and RESTful APIs using NLP intent classification with 80% accuracy.',
                     category: 'AI / Backend API',
                     year: '2023',
                     tags: ['Python', 'Flask', 'NLP', 'TF-IDF', 'N-grams'],
-                    images: ['/healthcare_nlp.png'],
-                },
-                'aws-infra': {
-                    desc: 'Provisioned and configured AWS EC2 instances, security groups, and network access rules for secure cloud lifecycle management.',
-                    category: 'Cloud / DevOps',
-                    year: '2025',
-                    tags: ['AWS', 'EC2', 'Security Groups', 'Infrastructure'],
-                    images: ['/aws_infra.png'],
+                    images: ['/healthcare_nlp_1.png', '/healthcare_nlp_2.png'],
                 },
             };
         }
@@ -2512,6 +2505,7 @@
 
 
         const detailEl = document.getElementById('project-detail');
+        const detailInfo = detailEl ? detailEl.querySelector('.detail-info') : null;
         const detailTitle = document.getElementById('detail-title');
         const detailTitleWrap = document.getElementById('detail-title-wrap');
         const detailYear = document.getElementById('detail-year');
@@ -2640,25 +2634,92 @@
                 return '<span class="detail-tag">' + t + '</span>';
             }).join('');
 
-            var allImages = [clickedItem.dataset.img].concat(proj.images);
-            detailThumbsInner.innerHTML = allImages.map(function (src) {
-                return '<img src="' + src + '" alt="" decoding="async">';
-            }).join('');
-            detailSelected.innerHTML = '<img src="' + allImages[0] + '" alt="" decoding="async">';
-            detailThumbsInner.querySelectorAll('img').forEach(function (img, i) {
-                if (img.decode) img.decode().catch(function () { });
-
-                img.addEventListener('click', function () {
-                    if (_activeThumbIdx >= 0 && _thumbImgs[_activeThumbIdx]) _thumbImgs[_activeThumbIdx].classList.remove('active');
-                    img.classList.add('active');
-                    _activeThumbIdx = i;
-                    if (_cachedSelImg) _cachedSelImg.src = img.src;
+            // Filter out duplicates and build the images list.
+            // Since the user requested to remove all AI photos and only supply real photos,
+            // we will display the gallery for projects that have real screenshots registered.
+            var uniqueImages = [];
+            if (proj.images && proj.images.length > 0) {
+                var rawImages = [clickedItem.dataset.img].concat(proj.images);
+                var seen = {};
+                rawImages.forEach(function (src) {
+                    if (!src) return;
+                    var filename = src.split('/').pop().toLowerCase();
+                    
+                    // Normalize 'sports_club.png' / 'tus_cricket_1.png'
+                    if (filename === 'sports_club.png' || filename === 'tus_cricket_1.png') {
+                        if (!seen['tus_cricket_1.png']) {
+                            seen['tus_cricket_1.png'] = true;
+                            uniqueImages.push('/tus_cricket_1.png');
+                        }
+                    } 
+                    // Normalize 'food_delivery.png' / 'food_delivery_1.png'
+                    else if (filename === 'food_delivery.png' || filename === 'food_delivery_1.png') {
+                        if (!seen['food_delivery_1.png']) {
+                            seen['food_delivery_1.png'] = true;
+                            uniqueImages.push('/food_delivery_1.png');
+                        }
+                    } 
+                    // Normalize 'healthcare_nlp.png' / 'healthcare_nlp_1.png'
+                    else if (filename === 'healthcare_nlp.png' || filename === 'healthcare_nlp_1.png') {
+                        if (!seen['healthcare_nlp_1.png']) {
+                            seen['healthcare_nlp_1.png'] = true;
+                            uniqueImages.push('/healthcare_nlp_1.png');
+                        }
+                    }
+                    // Normalize 'durr_cts.png' / 'durr_cts_1.png'
+                    else if (filename === 'durr_cts.png' || filename === 'durr_cts_1.png') {
+                        if (!seen['durr_cts_1.png']) {
+                            seen['durr_cts_1.png'] = true;
+                            uniqueImages.push('/durr_cts_1.png');
+                        }
+                    } 
+                    else if (!seen[filename]) {
+                        seen[filename] = true;
+                        uniqueImages.push(src);
+                    }
                 });
-            });
-            _activeThumbIdx = 0;
-            _thumbImgs = [].slice.call(detailThumbsInner.querySelectorAll('img'));
-            _thumbImgs[0].classList.add('active');
-            _cachedSelImg = detailSelected.querySelector('img');
+            }
+
+            // Store a flag on the detailEl indicating if the gallery is active for this project
+            detailEl.dataset.hasGallery = uniqueImages.length > 0 ? "true" : "false";
+
+            if (uniqueImages.length > 0) {
+                detailGalleryWrap.style.display = 'flex';
+                detailInfo.style.width = '70%';
+                detailInfo.style.maxWidth = '';
+                detailInfo.style.margin = '';
+                
+                detailThumbsInner.innerHTML = uniqueImages.map(function (src) {
+                    return '<img src="' + src + '" alt="" decoding="async">';
+                }).join('');
+                detailSelected.innerHTML = '<img src="' + uniqueImages[0] + '" alt="" decoding="async">';
+                
+                detailThumbsInner.querySelectorAll('img').forEach(function (img, i) {
+                    if (img.decode) img.decode().catch(function () { });
+                    img.addEventListener('click', function () {
+                        if (_activeThumbIdx >= 0 && _thumbImgs[_activeThumbIdx]) _thumbImgs[_activeThumbIdx].classList.remove('active');
+                        img.classList.add('active');
+                        _activeThumbIdx = i;
+                        if (_cachedSelImg) _cachedSelImg.src = img.src;
+                    });
+                });
+                _activeThumbIdx = 0;
+                _thumbImgs = [].slice.call(detailThumbsInner.querySelectorAll('img'));
+                _thumbImgs[0].classList.add('active');
+                _cachedSelImg = detailSelected.querySelector('img');
+            } else {
+                detailGalleryWrap.style.display = 'none';
+                detailInfo.style.width = '100%';
+                detailInfo.style.maxWidth = '800px';
+                detailInfo.style.margin = '0 auto';
+                
+                detailThumbsInner.innerHTML = '';
+                detailSelected.innerHTML = '';
+                _activeThumbIdx = -1;
+                _thumbImgs = [];
+                _cachedSelImg = null;
+            }
+
             _galleryY = 0;
             gsap.set(detailThumbsInner, {
                 y: 0
@@ -2734,23 +2795,26 @@
             }, 1.3);
 
 
-            tl.fromTo(detailGalleryWrap, {
-                opacity: 0
-            }, {
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power3.out'
-            }, 1.2);
-
-
-            tl.add(function () {
-                _galleryMaxScroll = Math.max(0, detailThumbsInner.scrollHeight - detailThumbs.clientHeight);
-                _qGalleryY = gsap.quickTo(detailThumbsInner, 'y', {
+            if (detailEl.dataset.hasGallery === "true") {
+                tl.fromTo(detailGalleryWrap, {
+                    opacity: 0
+                }, {
+                    opacity: 1,
                     duration: 0.8,
-                    ease: 'power2.out'
+                    ease: 'power3.out'
+                }, 1.2);
+
+                tl.add(function () {
+                    _galleryMaxScroll = Math.max(0, detailThumbsInner.scrollHeight - detailThumbs.clientHeight);
+                    _qGalleryY = gsap.quickTo(detailThumbsInner, 'y', {
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
+                    _galleryRAF = requestAnimationFrame(updateActiveThumb);
                 });
-                _galleryRAF = requestAnimationFrame(updateActiveThumb);
-            });
+            } else {
+                gsap.set(detailGalleryWrap, { opacity: 0 });
+            }
         }
 
         function closeProject() {
@@ -2845,6 +2909,12 @@
                 gsap.set(flyingTitle, {
                     opacity: 0
                 });
+                // Reset layout overrides
+                detailInfo.style.width = '';
+                detailInfo.style.maxWidth = '';
+                detailInfo.style.margin = '';
+                detailGalleryWrap.style.display = '';
+                
                 _activeThumbIdx = -1;
                 _thumbImgs = [];
                 _cachedSelImg = null;
@@ -2933,6 +3003,21 @@
         }
 
         setTimeout(preloadProjectImages, 4000);
+
+        // Check URL hash on initial page load to automatically open project modal
+        setTimeout(function() {
+            var hash = window.location.hash.substring(1);
+            if (hash && PROJECTS[hash]) {
+                var matchingItem = document.querySelector('.proj-item[data-id="' + hash + '"]');
+                if (matchingItem) {
+                    var itemIdx = Array.from(items).indexOf(matchingItem);
+                    if (itemIdx >= 0) {
+                        activateProject(itemIdx);
+                    }
+                    openProject(hash, matchingItem);
+                }
+            }
+        }, 100);
     }
 
     ScrollTrigger.refresh();
