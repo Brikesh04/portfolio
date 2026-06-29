@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getSettings, saveSettings } from '@/lib/db';
+import { verifyAuth } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,6 +10,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  if (!verifyAuth()) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const settings = await request.json();
     if (!settings || typeof settings !== 'object') {

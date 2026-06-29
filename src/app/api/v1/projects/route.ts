@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getProjects, saveProjects } from '@/lib/db';
+import { verifyAuth } from '@/lib/auth';
 
 import fs from 'fs';
 import path from 'path';
@@ -7,13 +8,15 @@ import path from 'path';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-
-
   const projects = await getProjects();
   return NextResponse.json(projects);
 }
 
 export async function POST(request: Request) {
+  if (!verifyAuth()) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
     const projects = await request.json();
     if (!Array.isArray(projects)) {

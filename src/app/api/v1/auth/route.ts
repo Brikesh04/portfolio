@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getAdminTokenHash } from '@/lib/auth';
 
 export async function POST(request: Request) {
   try {
@@ -11,7 +12,18 @@ export async function POST(request: Request) {
     }
 
     if (password === ADMIN_PASSWORD) {
-      return NextResponse.json({ success: true });
+      const response = NextResponse.json({ success: true });
+      const hash = getAdminTokenHash();
+      if (hash) {
+        response.cookies.set('admin_token', hash, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'strict',
+          maxAge: 60 * 60 * 24, // 1 day
+          path: '/',
+        });
+      }
+      return response;
     }
 
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

@@ -1359,7 +1359,13 @@
 
 
         let _cachedSelImg = null;
+        let _cachedCardRect = null;
+        let _cachedSelImgRect = null;
 
+        window.addEventListener('resize', () => {
+            _cachedCardRect = null;
+            _cachedSelImgRect = null;
+        });
 
         document.addEventListener('mousemove', (e) => {
 
@@ -1369,23 +1375,34 @@
             }
 
             if (_projectsVisible) {
-                const rect = card.getBoundingClientRect();
-                const cx = rect.left + rect.width / 2;
-                const cy = rect.top + rect.height / 2;
+                if (!_cachedCardRect) {
+                    _cachedCardRect = card.getBoundingClientRect();
+                }
+                const cx = _cachedCardRect.left + _cachedCardRect.width / 2;
+                const cy = _cachedCardRect.top + _cachedCardRect.height / 2;
 
 
-                const ry = Math.max(-1, Math.min(1, (e.clientX - cx) / (rect.width / 2)));
-                const rx = Math.max(-1, Math.min(1, (e.clientY - cy) / (rect.height / 2)));
+                const ry = Math.max(-1, Math.min(1, (e.clientX - cx) / (_cachedCardRect.width / 2)));
+                const rx = Math.max(-1, Math.min(1, (e.clientY - cy) / (_cachedCardRect.height / 2)));
                 _tiltTargetRY = ry * 6;
                 _tiltTargetRX = -rx * 5;
             }
 
             if (projectOpen && _cachedSelImg) {
-                var sr = _cachedSelImg.getBoundingClientRect();
-                var scx = sr.left + sr.width / 2;
-                var scy = sr.top + sr.height / 2;
-                const dry = Math.max(-1, Math.min(1, (e.clientX - scx) / (sr.width / 2)));
-                const drx = Math.max(-1, Math.min(1, (e.clientY - scy) / (sr.height / 2)));
+                if (!_cachedSelImgRect || _cachedSelImgRect.element !== _cachedSelImg) {
+                    const rect = _cachedSelImg.getBoundingClientRect();
+                    _cachedSelImgRect = {
+                        left: rect.left,
+                        top: rect.top,
+                        width: rect.width,
+                        height: rect.height,
+                        element: _cachedSelImg
+                    };
+                }
+                var scx = _cachedSelImgRect.left + _cachedSelImgRect.width / 2;
+                var scy = _cachedSelImgRect.top + _cachedSelImgRect.height / 2;
+                const dry = Math.max(-1, Math.min(1, (e.clientX - scx) / (_cachedSelImgRect.width / 2)));
+                const drx = Math.max(-1, Math.min(1, (e.clientY - scy) / (_cachedSelImgRect.height / 2)));
                 _detTiltTargetRY = dry * 8;
                 _detTiltTargetRX = -drx * 6;
             }
@@ -2150,13 +2167,20 @@
                     });
                 }
 
+                var preElRect = null;
+                window.addEventListener('resize', function () {
+                    preElRect = null;
+                });
+
                 preEl.addEventListener('mousemove', function (e) {
                     if (!origGrid) init();
-                    var rect = preEl.getBoundingClientRect();
-                    var charW = rect.width / cols;
-                    var charH = rect.height / rows;
-                    mxC = (e.clientX - rect.left) / charW;
-                    myC = (e.clientY - rect.top) / charH;
+                    if (!preElRect) {
+                        preElRect = preEl.getBoundingClientRect();
+                    }
+                    var charW = preElRect.width / cols;
+                    var charH = preElRect.height / rows;
+                    mxC = (e.clientX - preElRect.left) / charW;
+                    myC = (e.clientY - preElRect.top) / charH;
 
                     var now = performance.now();
                     var maxR = radius + 3;
@@ -2707,6 +2731,7 @@
                 _thumbImgs = [].slice.call(detailThumbsInner.querySelectorAll('img'));
                 _thumbImgs[0].classList.add('active');
                 _cachedSelImg = detailSelected.querySelector('img');
+                _cachedSelImgRect = null;
             } else {
                 detailGalleryWrap.style.display = 'none';
                 detailInfo.style.width = '100%';
@@ -2718,6 +2743,7 @@
                 _activeThumbIdx = -1;
                 _thumbImgs = [];
                 _cachedSelImg = null;
+                _cachedSelImgRect = null;
             }
 
             _galleryY = 0;
@@ -2918,6 +2944,7 @@
                 _activeThumbIdx = -1;
                 _thumbImgs = [];
                 _cachedSelImg = null;
+                _cachedSelImgRect = null;
                 if (_flyingSourceItem) {
                     _flyingSourceItem.style.visibility = '';
                     _flyingSourceItem = null;
@@ -3263,12 +3290,19 @@
 
             let isAwardHovered = false;
 
+            const qAwardCursorX = gsap.quickTo(awardCursor, 'x', {
+                duration: 0.15,
+                ease: 'power3.out'
+            });
+            const qAwardCursorY = gsap.quickTo(awardCursor, 'y', {
+                duration: 0.15,
+                ease: 'power3.out'
+            });
+
             window.addEventListener('mousemove', (e) => {
                 if (isAwardHovered) {
-                    gsap.set(awardCursor, {
-                        x: e.clientX,
-                        y: e.clientY
-                    });
+                    qAwardCursorX(e.clientX);
+                    qAwardCursorY(e.clientY);
                 }
             });
 
