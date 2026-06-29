@@ -1941,12 +1941,3 @@ img[src*="tus_cricket"] {
 .awards-title {
     font-size: clamp(2rem, 3vw, 2.4rem) !important;
 }
-
-/* Performance Optimizations: Skip rendering for offscreen sections */
-.projects,
-.skills,
-.circle-gallery,
-.contact {
-    content-visibility: auto;
-    contain-intrinsic-size: 800px;
-}
